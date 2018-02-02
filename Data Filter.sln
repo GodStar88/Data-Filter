@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Filter", "Data Filter\Data Filter.csproj", "{E4ABC024-C167-42C9-8033-D3AEA5476892}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4ABC024-C167-42C9-8033-D3AEA5476892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4ABC024-C167-42C9-8033-D3AEA5476892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4ABC024-C167-42C9-8033-D3AEA5476892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4ABC024-C167-42C9-8033-D3AEA5476892}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90E5A80B-94C5-4135-9BF3-037252C40AEB}
+	EndGlobalSection
+EndGlobal
