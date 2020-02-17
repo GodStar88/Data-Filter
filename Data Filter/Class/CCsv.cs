@@ -79,5 +79,65 @@ namespace Data_Filter
             }
             return list;
         }
+
+
+        public void AppendCsvContact(CContact profile, string path)
+        {
+            List<CContact> list = new List<CContact>();
+            list.AddRange(ReadCsvContact(path));
+            list.Add(profile);
+            SaveCsvContact(list, path);
+        }
+        /// <summary>
+        /// Save CSV
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="path"></param>
+        public void SaveCsvContact(List<CContact> list, string path)
+        {
+            using (StreamWriter sw = new StreamWriter(path))
+            using (CsvWriter cw = new CsvWriter(sw))
+            {
+                cw.WriteHeader<CContact>();
+                cw.NextRecord();
+                foreach (CContact item in list)
+                {
+                    cw.WriteRecord<CContact>(item);
+                    cw.NextRecord();
+                }
+            }
+        }
+        /// <summary>
+        /// Read CSV
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public List<CContact> ReadCsvContact(string path)
+        {
+            List<CContact> list = new List<CContact>();
+            using (var textReader = File.OpenText(path))
+            {
+                var csv = new CsvReader(textReader);
+                while (csv.Read())
+                {
+                    try
+                    {
+                        var record = csv.Context.Record;
+                        var profile = new CContact();
+                        profile.name = record[2];
+                        profile.title = record[6];
+                        profile.email = record[37];
+                        profile.phone = record[59];
+                        list.Add(profile);
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+                }
+                textReader.Close();
+            }
+            return list;
+        }
     }
 }

@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace Data_Filter
 {
-    public partial class FrmMain : Form
+    public partial class Form2 : Form
     {
         private class StopwatchHelper
         {
@@ -40,9 +40,9 @@ namespace Data_Filter
         }
 
 
-        private List<CProfile> ProfileList = new List<CProfile>();
+        private List<CContact> ProfileList = new List<CContact>();
         public Thread process;
-        public FrmMain()
+        public Form2()
         {
             InitializeComponent();
         }
@@ -59,7 +59,7 @@ namespace Data_Filter
                 string path = Path.GetFullPath(theDialog.FileName);
                 Settings.Default["OpenURL"] = Path.GetDirectoryName(theDialog.FileName);
                 Settings.Default.Save();
-                ProfileList = new CCsv().ReadCsv(path);
+                ProfileList = new CCsv().ReadCsvContact(path);
                 // _swDGV = new StopwatchHelper(lstResultsDGV);
                 // RepopulateDGV();
                 process = new Thread(() => LoadProfile(""));
@@ -91,47 +91,33 @@ namespace Data_Filter
         private void LoadProfile(string str)
         {
             int count = 0;
-            object obj = (from m in ProfileList.Where(delegate (CProfile m)
+            object obj = (from m in ProfileList.Where(delegate (CContact m)
             {
                 switch (comboBox_Search.Text)
                 {
                     case "Name":
-                        if (m.name.Contains(str))
+                        if (m.name.ToLower().Contains(str.ToLower()))
                         {
                             count++;
                             return true;
                         }
                         break;
                     case "Title":
-                        if (m.title.Contains(str))
+                        if (m.title.ToLower().Contains(str.ToLower()))
                         {
                             count++;
                             return true;
                         }
                         break;
-                    case "Service":
-                        if (m.service.Contains(str))
-                        {
-                            count++;
-                            return true;
-                        }
-                        break;
-                    case "Email":
-                        if (m.email1.Contains(str) || m.email2.Contains(str) || m.email3.Contains(str))
+                 case "Email":
+                        if (m.email.ToLower().Contains(str.ToLower()))
                         {
                             count++;
                             return true;
                         }
                         break;
                     case "Phone":
-                        if (m.phone1.Contains(str) || m.phone2.Contains(str) || m.phone3.Contains(str))
-                        {
-                            count++;
-                            return true;
-                        }
-                        break;
-                    case "Website":
-                        if (m.website.Contains(str))
+                        if (m.phone.ToLower().Contains(str.ToLower()))
                         {
                             count++;
                             return true;
@@ -148,14 +134,8 @@ namespace Data_Filter
                 No = count.ToString(),
                 Name = m.name,
                 Title = m.title,
-                Service = m.service,
-                Email1 = m.email1,
-                Email2 = m.email2,
-                Email3 = m.email3,
-                Phone1 = m.phone1,
-                Phone2 = m.phone2,
-                Phone3 = m.phone3,
-                Website = m.website
+                Email1 = m.email,
+                Phone1 = m.phone,
             }).ToList();
             CheckForIllegalCrossThreadCalls = false;
             this.Invoke((MethodInvoker)delegate
@@ -175,7 +155,7 @@ namespace Data_Filter
                 this.Invoke((MethodInvoker)delegate
                 {
                     if (ProfileList[i].title.Contains(v))
-                        dataGridView_Profile.Rows.Add(false, (dataGridView_Profile.Rows.Count + 1).ToString(), ProfileList[i].name, ProfileList[i].title, ProfileList[i].service, ProfileList[i].email1, ProfileList[i].email2, ProfileList[i].email3, ProfileList[i].phone1, ProfileList[i].phone2, ProfileList[i].phone3, ProfileList[i].website);
+                        dataGridView_Profile.Rows.Add(false, (dataGridView_Profile.Rows.Count + 1).ToString(), ProfileList[i].name, ProfileList[i].title, ProfileList[i].email, ProfileList[i].phone);
                 });
             }
         }
@@ -190,23 +170,17 @@ namespace Data_Filter
             if (savefile.ShowDialog() == DialogResult.OK)
             {
                 path = Path.GetFullPath(savefile.FileName);
-                List<CProfile> list = new List<CProfile>();
+                List<CContact> list = new List<CContact>();
                 for (int i = 0; i < dataGridView_Profile.Rows.Count; i++)
                 {
-                    CProfile profile = new CProfile();
+                    CContact profile = new CContact();
                     try { profile.name = dataGridView_Profile.Rows[i].Cells[1].Value.ToString(); } catch (Exception) { }
                     try { profile.title = dataGridView_Profile.Rows[i].Cells[2].Value.ToString(); } catch (Exception) { }
-                    try { profile.service = dataGridView_Profile.Rows[i].Cells[3].Value.ToString(); } catch (Exception) { }
-                    try { profile.email1 = dataGridView_Profile.Rows[i].Cells[4].Value.ToString(); } catch (Exception) { }
-                    try { profile.email2 = dataGridView_Profile.Rows[i].Cells[5].Value.ToString(); } catch (Exception) { }
-                    try { profile.email3 = dataGridView_Profile.Rows[i].Cells[6].Value.ToString(); } catch (Exception) { }
-                    try { profile.phone1 = dataGridView_Profile.Rows[i].Cells[7].Value.ToString(); } catch (Exception) { }
-                    try { profile.phone2 = dataGridView_Profile.Rows[i].Cells[8].Value.ToString(); } catch (Exception) { }
-                    try { profile.phone3 = dataGridView_Profile.Rows[i].Cells[9].Value.ToString(); } catch (Exception) { }
-                    try { profile.website = dataGridView_Profile.Rows[i].Cells[10].Value.ToString(); } catch (Exception) { }
+                    try { profile.email = dataGridView_Profile.Rows[i].Cells[3].Value.ToString(); } catch (Exception) { }
+                    try { profile.phone = dataGridView_Profile.Rows[i].Cells[4].Value.ToString(); } catch (Exception) { }
                     list.Add(profile);
                 }
-                new CCsv().SaveCsv(list, path);
+                new CCsv().SaveCsvContact(list, path);
             }
         }
 
@@ -228,28 +202,6 @@ namespace Data_Filter
             try { process.Abort(); } catch (Exception) { };
             process = new Thread(() => LoadProfile(textBox_Search.Text));
             process.Start();
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void checkBox_Profile_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_Profile.CheckState.ToString() == "Checked")
-            {
-                for (int i = 0; i < dataGridView_Profile.Rows.Count; i++)
-                {
-                    dataGridView_Profile.Rows[i].Cells[0].Value = true;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dataGridView_Profile.Rows.Count; i++)
-                {
-                    dataGridView_Profile.Rows[i].Cells[0].Value = false;
-                }
-            }
         }
 
         public void GridClear(DataGridView dataGridView)
