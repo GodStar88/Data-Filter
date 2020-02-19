@@ -68,7 +68,10 @@ namespace Data_Filter
                         profile.phone2 = record[7];
                         profile.phone3 = record[8];
                         profile.website = record[9];
-                        list.Add(profile);
+                        if (profile.name != "name")
+                        {
+                            list.Add(profile);
+                        }
                     }
                     catch (Exception)
                     {
@@ -124,11 +127,33 @@ namespace Data_Filter
                     {
                         var record = csv.Context.Record;
                         var profile = new CContact();
-                        profile.name = record[2];
-                        profile.title = record[6];
-                        profile.email = record[37];
-                        profile.phone = record[59];
-                        list.Add(profile);
+                        profile.List = record[1];
+                        profile.Name = record[2];
+                        profile.firstName = record[3];
+                        profile.lastName = record[5];
+                        profile.Title = record[6];
+                        profile.LIProfileUrl = record[7];
+                        profile.CompanyLIProfileUrl = record[8];
+                        profile.Company = record[10];
+                        profile.CompanyIndustry = record[11];
+                        profile.Website = record[15];
+                        profile.CompanyLocation = record[16];
+                        profile.companyStreet1 = record[17];
+                        profile.ContactLocation = record[26];
+                        profile.Phone = record[36];
+                        profile.Email = record[37];
+                        profile.email1 = record[38];
+                        profile.email2 = record[41];
+                        profile.PersonalEmail = record[44];
+                        profile.companyPhone1 = record[51];
+                        profile.companyPhone2 = record[53];
+                        profile.companyPhone3 = record[55];
+                        profile.contactPhone1 = record[57];
+                        profile.contactPhone2 = record[59];
+                        if (profile.List != "List")
+                        {
+                            list.Add(profile);
+                        }
                     }
                     catch (Exception)
                     {

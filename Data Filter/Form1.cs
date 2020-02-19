@@ -17,36 +17,19 @@ namespace Data_Filter
 {
     public partial class FrmMain : Form
     {
-        private class StopwatchHelper
-        {
-            private ListBox _listbox;
-            private Stopwatch _sw = new Stopwatch();
-
-            public StopwatchHelper(ListBox listbox)
-            {
-                _listbox = listbox;
-            }
-
-            public void Start()
-            {
-                _sw.Restart();
-            }
-
-            public void Stop(string msg)
-            {
-                _sw.Stop();
-                _listbox.Items.Add(String.Format("{0}: {1} ms", msg, _sw.ElapsedMilliseconds));
-            }
-        }
-
-
         private List<CProfile> ProfileList = new List<CProfile>();
-        public Thread process;
+        private Thread ProfileProcess;
+        private DataTable ProfileDTable = new DataTable();
+
+        private List<CContact> ContactList = new List<CContact>();
+        private Thread ContactProcess;
+        private DataTable ContactDTable = new DataTable();
+
         public FrmMain()
         {
             InitializeComponent();
         }
-        DataTable DTable = new DataTable();
+       
         private void Btn_Open_Click(object sender, EventArgs e)
         {
             OpenFileDialog theDialog = new OpenFileDialog();
@@ -60,40 +43,17 @@ namespace Data_Filter
                 Settings.Default["OpenURL"] = Path.GetDirectoryName(theDialog.FileName);
                 Settings.Default.Save();
                 ProfileList = new CCsv().ReadCsv(path);
-                // _swDGV = new StopwatchHelper(lstResultsDGV);
-                // RepopulateDGV();
-                process = new Thread(() => LoadProfile(""));
-                process.Start();                
+                ProfileProcess = new Thread(() => LoadProfile(""));
+                ProfileProcess.Start();                
             }
         }
-        StopwatchHelper _swDGV;
-        private void RepopulateDGV()
-        {
-            _swDGV.Start();
 
-            dataGridView_Profile.Rows.Clear();
-
-            List<DataGridViewRow> rows = new List<DataGridViewRow>();
-
-            for (int i = 1; i < ProfileList.Count; i++)
-            {
-                DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(dataGridView_Profile);
-                row.Cells[0].Value = ProfileList[i].name;
-                row.Cells[1].Value = ProfileList[i].title;
-                rows.Add(row);
-            }
-
-            dataGridView_Profile.Rows.AddRange(rows.ToArray());
-
-            _swDGV.Stop(String.Format("Populating {0} rows", ProfileList.Count.ToString()));
-        }
         private void LoadProfile(string str)
         {
             int count = 0;
             object obj = (from m in ProfileList.Where(delegate (CProfile m)
             {
-                switch (comboBox_Search.Text)
+                switch (cb_profile.Text)
                 {
                     case "Name":
                         if (m.name.Contains(str))
@@ -144,7 +104,6 @@ namespace Data_Filter
                 return false;
             }) select new
             {
-                Check = false,
                 No = count.ToString(),
                 Name = m.name,
                 Title = m.title,
@@ -165,19 +124,6 @@ namespace Data_Filter
                 dataGridView_Profile.DataSource = obj;
                 this.Text = "Data Filter";
             });
-        }
-
-        private void LoadProfile1(string v)
-        {
-            for (int i = 0; i < ProfileList.Count; i++)
-            {
-                CheckForIllegalCrossThreadCalls = false;
-                this.Invoke((MethodInvoker)delegate
-                {
-                    if (ProfileList[i].title.Contains(v))
-                        dataGridView_Profile.Rows.Add(false, (dataGridView_Profile.Rows.Count + 1).ToString(), ProfileList[i].name, ProfileList[i].title, ProfileList[i].service, ProfileList[i].email1, ProfileList[i].email2, ProfileList[i].email3, ProfileList[i].phone1, ProfileList[i].phone2, ProfileList[i].phone3, ProfileList[i].website);
-                });
-            }
         }
 
         private void Btn_Save_Click(object sender, EventArgs e)
@@ -210,54 +156,160 @@ namespace Data_Filter
             }
         }
 
-        private void Btn_Delete_Click(object sender, EventArgs e)
-        {
-            for (int i = dataGridView_Profile.Rows.Count - 1; i >= 0; i--)
-            {
-                if (Convert.ToBoolean(dataGridView_Profile.Rows[i].Cells[0].Value))
-                    dataGridView_Profile.Rows.RemoveAt(i);
-            }
-            for (int i = 0; i < dataGridView_Profile.Rows.Count; i++)
-            {
-                dataGridView_Profile.Rows[i].Cells[1].Value = (i + 1).ToString();
-            }
-        }
-
         private void Btn_Search_Click(object sender, EventArgs e)
         {            
-            try { process.Abort(); } catch (Exception) { };
-            process = new Thread(() => LoadProfile(textBox_Search.Text));
-            process.Start();
+            try { ProfileProcess.Abort(); } catch (Exception) { };
+            ProfileProcess = new Thread(() => LoadProfile(tb_profile.Text));
+            ProfileProcess.Start();
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void checkBox_Profile_CheckedChanged(object sender, EventArgs e)
+
+        private void Btn__Contact_Search_Click(object sender, EventArgs e)
         {
-            if (checkBox_Profile.CheckState.ToString() == "Checked")
+            try { ContactProcess.Abort(); } catch (Exception) { };
+            ContactProcess = new Thread(() => LoadContact(tb_contact.Text));
+            ContactProcess.Start();
+        }
+
+        private void Btn_Contact_Open_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog theDialog = new OpenFileDialog();
+            theDialog.Title = "Open csv File";
+            theDialog.Filter = "csv files|*.csv";
+            theDialog.InitialDirectory = Settings.Default["OpenURL"].ToString();
+            if (theDialog.ShowDialog() == DialogResult.OK)
             {
-                for (int i = 0; i < dataGridView_Profile.Rows.Count; i++)
-                {
-                    dataGridView_Profile.Rows[i].Cells[0].Value = true;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dataGridView_Profile.Rows.Count; i++)
-                {
-                    dataGridView_Profile.Rows[i].Cells[0].Value = false;
-                }
+
+                string path = Path.GetFullPath(theDialog.FileName);
+                Settings.Default["OpenURL"] = Path.GetDirectoryName(theDialog.FileName);
+                Settings.Default.Save();
+                ContactList = new CCsv().ReadCsvContact(path);
+                ContactProcess = new Thread(() => LoadContact(""));
+                ContactProcess.Start();
             }
         }
 
-        public void GridClear(DataGridView dataGridView)
+        private void Btn_Contact_Save_Click(object sender, EventArgs e)
         {
-            for (int i = dataGridView.Rows.Count - 1; i >= 0; i--)
+            SaveFileDialog savefile = new SaveFileDialog();
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+            savefile.FileName = date + "- profile.csv";
+            savefile.Filter = "csv files|*.csv";
+            string path = "";
+            if (savefile.ShowDialog() == DialogResult.OK)
             {
-                dataGridView.Rows.RemoveAt(i);
+                path = Path.GetFullPath(savefile.FileName);
+                List<CContact> list = new List<CContact>();
+                for (int i = 0; i < dataGridView_Contact.Rows.Count; i++)
+                {
+                    CContact contact = new CContact();
+                    try { contact.List = dataGridView_Contact.Rows[i].Cells[1].Value.ToString(); } catch (Exception) { }
+                    try { contact.Name = dataGridView_Contact.Rows[i].Cells[2].Value.ToString(); } catch (Exception) { }
+                    try { contact.firstName = dataGridView_Contact.Rows[i].Cells[3].Value.ToString(); } catch (Exception) { }
+                    try { contact.lastName = dataGridView_Contact.Rows[i].Cells[4].Value.ToString(); } catch (Exception) { }
+                    try { contact.Title = dataGridView_Contact.Rows[i].Cells[5].Value.ToString(); } catch (Exception) { }
+                    try { contact.LIProfileUrl = dataGridView_Contact.Rows[i].Cells[6].Value.ToString(); } catch (Exception) { }
+                    try { contact.CompanyLIProfileUrl = dataGridView_Contact.Rows[i].Cells[7].Value.ToString(); } catch (Exception) { }
+                    try { contact.Company = dataGridView_Contact.Rows[i].Cells[8].Value.ToString(); } catch (Exception) { }
+                    try { contact.CompanyIndustry = dataGridView_Contact.Rows[i].Cells[9].Value.ToString(); } catch (Exception) { }
+                    try { contact.Website = dataGridView_Contact.Rows[i].Cells[10].Value.ToString(); } catch (Exception) { }
+                    try { contact.CompanyLocation = dataGridView_Contact.Rows[i].Cells[11].Value.ToString(); } catch (Exception) { }
+                    try { contact.companyStreet1 = dataGridView_Contact.Rows[i].Cells[12].Value.ToString(); } catch (Exception) { }
+                    try { contact.ContactLocation = dataGridView_Contact.Rows[i].Cells[13].Value.ToString(); } catch (Exception) { }
+                    try { contact.Phone = dataGridView_Contact.Rows[i].Cells[14].Value.ToString(); } catch (Exception) { }
+                    try { contact.Email = dataGridView_Contact.Rows[i].Cells[15].Value.ToString(); } catch (Exception) { }
+                    try { contact.email1 = dataGridView_Contact.Rows[i].Cells[16].Value.ToString(); } catch (Exception) { }
+                    try { contact.email2 = dataGridView_Contact.Rows[i].Cells[17].Value.ToString(); } catch (Exception) { }
+                    try { contact.PersonalEmail = dataGridView_Contact.Rows[i].Cells[18].Value.ToString(); } catch (Exception) { }
+                    try { contact.companyPhone1 = dataGridView_Contact.Rows[i].Cells[19].Value.ToString(); } catch (Exception) { }
+                    try { contact.companyPhone2 = dataGridView_Contact.Rows[i].Cells[20].Value.ToString(); } catch (Exception) { }
+                    try { contact.companyPhone3 = dataGridView_Contact.Rows[i].Cells[21].Value.ToString(); } catch (Exception) { }
+                    try { contact.contactPhone1 = dataGridView_Contact.Rows[i].Cells[22].Value.ToString(); } catch (Exception) { }
+                    try { contact.contactPhone2 = dataGridView_Contact.Rows[i].Cells[23].Value.ToString(); } catch (Exception) { }
+                    list.Add(contact);
+                }
+                new CCsv().SaveCsvContact(list, path);
             }
+        }
+
+        private void LoadContact(string str)
+        {
+            int count = 0;
+            object obj = (from m in ContactList.Where(delegate (CContact m)
+            {
+                switch (cb_contact.Text)
+                {
+                    case "Name":
+                        if (m.Name.ToLower().Contains(str.ToLower()))
+                        {
+                            count++;
+                            return true;
+                        }
+                        break;
+                    case "Title":
+                        if (m.Title.ToLower().Contains(str.ToLower()))
+                        {
+                            count++;
+                            return true;
+                        }
+                        break;
+                    case "Email":
+                        if (m.Email.ToLower().Contains(str.ToLower()) || m.email1.ToLower().Contains(str.ToLower()) || m.email2.ToLower().Contains(str.ToLower()) || m.PersonalEmail.ToLower().Contains(str.ToLower()))
+                        {
+                            count++;
+                            return true;
+                        }
+                        break;
+                    case "Phone":
+                        if (m.companyPhone1.ToLower().Contains(str.ToLower()) || m.companyPhone2.ToLower().Contains(str.ToLower()) || m.companyPhone3.ToLower().Contains(str.ToLower()) || m.contactPhone1.ToLower().Contains(str.ToLower()) || m.contactPhone2.ToLower().Contains(str.ToLower()))
+                        {
+                            count++;
+                            return true;
+                        }
+                        break;
+                    default:
+                        count++;
+                        return true;
+                }
+                return false;
+            })
+                          select new
+                          {
+                              No = count.ToString(),
+                              List = m.List,
+                              Name = m.Name,
+                              firstName = m.firstName,
+                              lastName = m.lastName,
+                              Title = m.Title,
+                              LIProfileUrl = m.LIProfileUrl,
+                              CompanyLIProfileUrl = m.CompanyLIProfileUrl,
+                              Company = m.Company,
+                              CompanyIndustry = m.CompanyIndustry,
+                              Website = m.Website,
+                              CompanyLocation = m.CompanyLocation,
+                              companyStreet1 = m.companyStreet1,
+                              ContactLocation = m.ContactLocation,
+                              Phone = m.Phone,
+                              Email = m.Email,
+                              email1 = m.email1,
+                              email2 = m.email2,
+                              PersonalEmail = m.PersonalEmail,
+                              companyPhone1 = m.companyPhone1,
+                              companyPhone2 = m.companyPhone2,
+                              companyPhone3 = m.companyPhone3,
+                              contactPhone1 = m.contactPhone1,
+                              contactPhone2 = m.contactPhone2,
+                          }).ToList();
+
+
+
+            CheckForIllegalCrossThreadCalls = false;
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.Text = "Data Filter  Loading csv file";
+                dataGridView_Contact.AutoGenerateColumns = false;
+                dataGridView_Contact.DataSource = obj;
+                this.Text = "Data Filter";
+            });
         }
     }
 }
