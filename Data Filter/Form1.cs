@@ -32,6 +32,22 @@ namespace Data_Filter
        
         private void Btn_Open_Click(object sender, EventArgs e)
         {
+            dataGridView_Profile.Visible = true;
+            cb_profile.Visible = true;
+            tb_profile.Visible = true;
+            Btn_Search.Visible = true;
+            Btn_Save.Visible = true;
+            cb_profile_dedupe.Visible = true;
+            btn_profile_dedupe.Visible = true;
+
+            dataGridView_Contact.Visible = false;
+            cb_contact.Visible = false;
+            tb_contact.Visible = false;
+            Btn__Contact_Search.Visible = false;
+            Btn_Contact_Save.Visible = false;
+            cb_contact_dedupe.Visible = false;
+            btn_contact_dedupe.Visible = false;
+
             OpenFileDialog theDialog = new OpenFileDialog();
             theDialog.Title = "Open csv File";
             theDialog.Filter = "csv files|*.csv";
@@ -102,27 +118,29 @@ namespace Data_Filter
                         return true;
                 }
                 return false;
-            }) select new
-            {
-                No = count.ToString(),
-                Name = m.name,
-                Title = m.title,
-                Service = m.service,
-                Email1 = m.email1,
-                Email2 = m.email2,
-                Email3 = m.email3,
-                Phone1 = m.phone1,
-                Phone2 = m.phone2,
-                Phone3 = m.phone3,
-                Website = m.website
-            }).ToList();
+            })
+                          select new
+                          {
+                                 No = count.ToString(),
+                                 Name = m.name,
+                                 Title = m.title,
+                                 Service = m.service,
+                                 Email1 = m.email1,
+                                 Email2 = m.email2,
+                                 Email3 = m.email3,
+                                 Phone1 = m.phone1,
+                                 Phone2 = m.phone2,
+                                 Phone3 = m.phone3,
+                                 Website = m.website
+                             }).ToList();
+
             CheckForIllegalCrossThreadCalls = false;
             this.Invoke((MethodInvoker)delegate
             {
-                this.Text = "Data Filter  Loading csv file";
+                this.Text = "Data Manager  Loading csv file";
                 dataGridView_Profile.AutoGenerateColumns = false;
                 dataGridView_Profile.DataSource = obj;
-                this.Text = "Data Filter";
+                this.Text = "Data Manager 1.00";
             });
         }
 
@@ -172,6 +190,22 @@ namespace Data_Filter
 
         private void Btn_Contact_Open_Click(object sender, EventArgs e)
         {
+            dataGridView_Profile.Visible = false;
+            cb_profile.Visible = false;
+            tb_profile.Visible = false;
+            Btn_Search.Visible = false;
+            Btn_Save.Visible = false;
+            cb_profile_dedupe.Visible = false;
+            btn_profile_dedupe.Visible = false;
+
+            dataGridView_Contact.Visible = true;
+            cb_contact.Visible = true;
+            tb_contact.Visible = true;
+            Btn__Contact_Search.Visible = true;
+            Btn_Contact_Save.Visible = true;
+            cb_contact_dedupe.Visible = true;
+            btn_contact_dedupe.Visible = true;
+
             OpenFileDialog theDialog = new OpenFileDialog();
             theDialog.Title = "Open csv File";
             theDialog.Filter = "csv files|*.csv";
@@ -305,10 +339,383 @@ namespace Data_Filter
             CheckForIllegalCrossThreadCalls = false;
             this.Invoke((MethodInvoker)delegate
             {
-                this.Text = "Data Filter  Loading csv file";
+                this.Text = "Data Manager  Loading csv file";
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
-                this.Text = "Data Filter";
+                this.Text = "Data Manager 1.00";
+            });
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            this.Text = "Data Manager 1.00";
+        }
+
+        private void btn_profile_dedupe_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            object obj = null;
+
+            switch (cb_profile_dedupe.Text)
+            {
+                case "Name":
+                    obj = (from m in ProfileList.Where(delegate (CProfile m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               Name = m.name,
+                               Title = m.title,
+                               Service = m.service,
+                               Email1 = m.email1,
+                               Email2 = m.email2,
+                               Email3 = m.email3,
+                               Phone1 = m.phone1,
+                               Phone2 = m.phone2,
+                               Phone3 = m.phone3,
+                               Website = m.website
+                           }).GroupBy(m => m.Name).Select(m => m.FirstOrDefault()).ToList();
+                    break;
+                case "Title":
+                    obj = (from m in ProfileList.Where(delegate (CProfile m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               Name = m.name,
+                               Title = m.title,
+                               Service = m.service,
+                               Email1 = m.email1,
+                               Email2 = m.email2,
+                               Email3 = m.email3,
+                               Phone1 = m.phone1,
+                               Phone2 = m.phone2,
+                               Phone3 = m.phone3,
+                               Website = m.website
+                           }).GroupBy(m => m.Title).Select(m => m.FirstOrDefault()).ToList();
+                    break;
+                case "Service":
+                    obj = (from m in ProfileList.Where(delegate (CProfile m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               Name = m.name,
+                               Title = m.title,
+                               Service = m.service,
+                               Email1 = m.email1,
+                               Email2 = m.email2,
+                               Email3 = m.email3,
+                               Phone1 = m.phone1,
+                               Phone2 = m.phone2,
+                               Phone3 = m.phone3,
+                               Website = m.website
+                           }).GroupBy(m => m.Service).Select(m => m.FirstOrDefault()).ToList();
+                    break;
+                case "Email":
+                    obj = (from m in ProfileList.Where(delegate (CProfile m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               Name = m.name,
+                               Title = m.title,
+                               Service = m.service,
+                               Email1 = m.email1,
+                               Email2 = m.email2,
+                               Email3 = m.email3,
+                               Phone1 = m.phone1,
+                               Phone2 = m.phone2,
+                               Phone3 = m.phone3,
+                               Website = m.website
+                           }).GroupBy(m => m.Email1).Select(m => m.FirstOrDefault()).ToList();
+                    break;
+                case "Phone":
+                    obj = (from m in ProfileList.Where(delegate (CProfile m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               Name = m.name,
+                               Title = m.title,
+                               Service = m.service,
+                               Email1 = m.email1,
+                               Email2 = m.email2,
+                               Email3 = m.email3,
+                               Phone1 = m.phone1,
+                               Phone2 = m.phone2,
+                               Phone3 = m.phone3,
+                               Website = m.website
+                           }).GroupBy(m => m.Phone1).Select(m => m.FirstOrDefault()).ToList();
+                    break;
+                case "Website":
+                    obj = (from m in ProfileList.Where(delegate (CProfile m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               Name = m.name,
+                               Title = m.title,
+                               Service = m.service,
+                               Email1 = m.email1,
+                               Email2 = m.email2,
+                               Email3 = m.email3,
+                               Phone1 = m.phone1,
+                               Phone2 = m.phone2,
+                               Phone3 = m.phone3,
+                               Website = m.website
+                           }).GroupBy(m => m.Website).Select(m => m.FirstOrDefault()).ToList();
+                    break;
+            }
+
+            CheckForIllegalCrossThreadCalls = false;
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.Text = "Data Manager  Loading csv file";
+                dataGridView_Profile.AutoGenerateColumns = false;
+                dataGridView_Profile.DataSource = obj;
+                this.Text = "Data Manager 1.00";
+            });
+        }
+
+        private void btn_contact_dedupe_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            object obj = null;
+
+            switch (cb_contact_dedupe.Text)
+            {
+                case "Name":
+                    obj = (from m in ContactList.Where(delegate (CContact m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               List = m.List,
+                               Name = m.Name,
+                               firstName = m.firstName,
+                               lastName = m.lastName,
+                               Title = m.Title,
+                               LIProfileUrl = m.LIProfileUrl,
+                               CompanyLIProfileUrl = m.CompanyLIProfileUrl,
+                               Company = m.Company,
+                               CompanyIndustry = m.CompanyIndustry,
+                               Website = m.Website,
+                               CompanyLocation = m.CompanyLocation,
+                               companyStreet1 = m.companyStreet1,
+                               ContactLocation = m.ContactLocation,
+                               Phone = m.Phone,
+                               Email = m.Email,
+                               email1 = m.email1,
+                               email2 = m.email2,
+                               PersonalEmail = m.PersonalEmail,
+                               companyPhone1 = m.companyPhone1,
+                               companyPhone2 = m.companyPhone2,
+                               companyPhone3 = m.companyPhone3,
+                               contactPhone1 = m.contactPhone1,
+                               contactPhone2 = m.contactPhone2,
+                           }).GroupBy(m => m.Name).Select(m => m.FirstOrDefault()).ToList();
+                    break;
+                case "Title":
+                    obj = (from m in ContactList.Where(delegate (CContact m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               List = m.List,
+                               Name = m.Name,
+                               firstName = m.firstName,
+                               lastName = m.lastName,
+                               Title = m.Title,
+                               LIProfileUrl = m.LIProfileUrl,
+                               CompanyLIProfileUrl = m.CompanyLIProfileUrl,
+                               Company = m.Company,
+                               CompanyIndustry = m.CompanyIndustry,
+                               Website = m.Website,
+                               CompanyLocation = m.CompanyLocation,
+                               companyStreet1 = m.companyStreet1,
+                               ContactLocation = m.ContactLocation,
+                               Phone = m.Phone,
+                               Email = m.Email,
+                               email1 = m.email1,
+                               email2 = m.email2,
+                               PersonalEmail = m.PersonalEmail,
+                               companyPhone1 = m.companyPhone1,
+                               companyPhone2 = m.companyPhone2,
+                               companyPhone3 = m.companyPhone3,
+                               contactPhone1 = m.contactPhone1,
+                               contactPhone2 = m.contactPhone2,
+                           }).GroupBy(m => m.Title).Select(m => m.FirstOrDefault()).ToList();
+                    break;
+                case "Email":
+                    obj = (from m in ContactList.Where(delegate (CContact m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               List = m.List,
+                               Name = m.Name,
+                               firstName = m.firstName,
+                               lastName = m.lastName,
+                               Title = m.Title,
+                               LIProfileUrl = m.LIProfileUrl,
+                               CompanyLIProfileUrl = m.CompanyLIProfileUrl,
+                               Company = m.Company,
+                               CompanyIndustry = m.CompanyIndustry,
+                               Website = m.Website,
+                               CompanyLocation = m.CompanyLocation,
+                               companyStreet1 = m.companyStreet1,
+                               ContactLocation = m.ContactLocation,
+                               Phone = m.Phone,
+                               Email = m.Email,
+                               email1 = m.email1,
+                               email2 = m.email2,
+                               PersonalEmail = m.PersonalEmail,
+                               companyPhone1 = m.companyPhone1,
+                               companyPhone2 = m.companyPhone2,
+                               companyPhone3 = m.companyPhone3,
+                               contactPhone1 = m.contactPhone1,
+                               contactPhone2 = m.contactPhone2,
+                           }).GroupBy(m => m.email1).Select(m => m.FirstOrDefault()).ToList();
+                    break;
+                case "Phone":
+                    obj = (from m in ContactList.Where(delegate (CContact m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               List = m.List,
+                               Name = m.Name,
+                               firstName = m.firstName,
+                               lastName = m.lastName,
+                               Title = m.Title,
+                               LIProfileUrl = m.LIProfileUrl,
+                               CompanyLIProfileUrl = m.CompanyLIProfileUrl,
+                               Company = m.Company,
+                               CompanyIndustry = m.CompanyIndustry,
+                               Website = m.Website,
+                               CompanyLocation = m.CompanyLocation,
+                               companyStreet1 = m.companyStreet1,
+                               ContactLocation = m.ContactLocation,
+                               Phone = m.Phone,
+                               Email = m.Email,
+                               email1 = m.email1,
+                               email2 = m.email2,
+                               PersonalEmail = m.PersonalEmail,
+                               companyPhone1 = m.companyPhone1,
+                               companyPhone2 = m.companyPhone2,
+                               companyPhone3 = m.companyPhone3,
+                               contactPhone1 = m.contactPhone1,
+                               contactPhone2 = m.contactPhone2,
+                           }).GroupBy(m => m.Phone).Select(m => m.FirstOrDefault()).ToList();
+                    break;
+                case "Linkedin":
+                    obj = (from m in ContactList.Where(delegate (CContact m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               List = m.List,
+                               Name = m.Name,
+                               firstName = m.firstName,
+                               lastName = m.lastName,
+                               Title = m.Title,
+                               LIProfileUrl = m.LIProfileUrl,
+                               CompanyLIProfileUrl = m.CompanyLIProfileUrl,
+                               Company = m.Company,
+                               CompanyIndustry = m.CompanyIndustry,
+                               Website = m.Website,
+                               CompanyLocation = m.CompanyLocation,
+                               companyStreet1 = m.companyStreet1,
+                               ContactLocation = m.ContactLocation,
+                               Phone = m.Phone,
+                               Email = m.Email,
+                               email1 = m.email1,
+                               email2 = m.email2,
+                               PersonalEmail = m.PersonalEmail,
+                               companyPhone1 = m.companyPhone1,
+                               companyPhone2 = m.companyPhone2,
+                               companyPhone3 = m.companyPhone3,
+                               contactPhone1 = m.contactPhone1,
+                               contactPhone2 = m.contactPhone2,
+                           }).GroupBy(m => m.LIProfileUrl).Select(m => m.FirstOrDefault()).ToList();
+                    break;
+                default:
+                    obj = (from m in ContactList.Where(delegate (CContact m)
+                    {
+                        count++;
+                        return true;
+                    })
+                           select new
+                           {
+                               No = count.ToString(),
+                               List = m.List,
+                               Name = m.Name,
+                               firstName = m.firstName,
+                               lastName = m.lastName,
+                               Title = m.Title,
+                               LIProfileUrl = m.LIProfileUrl,
+                               CompanyLIProfileUrl = m.CompanyLIProfileUrl,
+                               Company = m.Company,
+                               CompanyIndustry = m.CompanyIndustry,
+                               Website = m.Website,
+                               CompanyLocation = m.CompanyLocation,
+                               companyStreet1 = m.companyStreet1,
+                               ContactLocation = m.ContactLocation,
+                               Phone = m.Phone,
+                               Email = m.Email,
+                               email1 = m.email1,
+                               email2 = m.email2,
+                               PersonalEmail = m.PersonalEmail,
+                               companyPhone1 = m.companyPhone1,
+                               companyPhone2 = m.companyPhone2,
+                               companyPhone3 = m.companyPhone3,
+                               contactPhone1 = m.contactPhone1,
+                               contactPhone2 = m.contactPhone2,
+                           }).ToList();
+                    break;
+            }
+
+            CheckForIllegalCrossThreadCalls = false;
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.Text = "Data Manager  Loading csv file";
+                dataGridView_Contact.AutoGenerateColumns = false;
+                dataGridView_Contact.DataSource = obj;
+                this.Text = "Data Manager 1.00";
             });
         }
     }

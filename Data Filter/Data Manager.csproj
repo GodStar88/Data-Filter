@@ -7,7 +7,7 @@
     <ProjectGuid>{E4ABC024-C167-42C9-8033-D3AEA5476892}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Data_Filter</RootNamespace>
-    <AssemblyName>Data Filter</AssemblyName>
+    <AssemblyName>Data Manager</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -82,6 +82,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
