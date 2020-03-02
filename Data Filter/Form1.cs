@@ -134,6 +134,7 @@ namespace Data_Filter
                               Website = m.website
                           }).ToList();
 
+
             CheckForIllegalCrossThreadCalls = false;
             this.Invoke((MethodInvoker)delegate
             {
