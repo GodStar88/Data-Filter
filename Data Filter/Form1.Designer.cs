@@ -91,6 +91,7 @@
             this.btn_profile_dedupe = new System.Windows.Forms.Button();
             this.cb_profile_dedupe = new System.Windows.Forms.CheckedListBox();
             this.cb_contact_dedupe = new System.Windows.Forms.CheckedListBox();
+            this.btn_email = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Profile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Contact)).BeginInit();
             this.SuspendLayout();
@@ -233,7 +234,7 @@
             // 
             // Btn_Save
             // 
-            this.Btn_Save.Location = new System.Drawing.Point(1145, 627);
+            this.Btn_Save.Location = new System.Drawing.Point(1085, 627);
             this.Btn_Save.Name = "Btn_Save";
             this.Btn_Save.Size = new System.Drawing.Size(75, 53);
             this.Btn_Save.TabIndex = 172;
@@ -243,14 +244,14 @@
             // 
             // tb_profile
             // 
-            this.tb_profile.Location = new System.Drawing.Point(546, 642);
+            this.tb_profile.Location = new System.Drawing.Point(510, 642);
             this.tb_profile.Name = "tb_profile";
             this.tb_profile.Size = new System.Drawing.Size(170, 20);
             this.tb_profile.TabIndex = 174;
             // 
             // Btn_Search
             // 
-            this.Btn_Search.Location = new System.Drawing.Point(737, 625);
+            this.Btn_Search.Location = new System.Drawing.Point(701, 625);
             this.Btn_Search.Name = "Btn_Search";
             this.Btn_Search.Size = new System.Drawing.Size(75, 53);
             this.Btn_Search.TabIndex = 175;
@@ -276,7 +277,7 @@
             "Email",
             "Phone",
             "Website"});
-            this.cb_profile.Location = new System.Drawing.Point(392, 642);
+            this.cb_profile.Location = new System.Drawing.Point(356, 642);
             this.cb_profile.Name = "cb_profile";
             this.cb_profile.Size = new System.Drawing.Size(121, 21);
             this.cb_profile.TabIndex = 178;
@@ -289,7 +290,7 @@
             "Title",
             "Email",
             "Phone"});
-            this.cb_contact.Location = new System.Drawing.Point(392, 642);
+            this.cb_contact.Location = new System.Drawing.Point(356, 642);
             this.cb_contact.Name = "cb_contact";
             this.cb_contact.Size = new System.Drawing.Size(121, 21);
             this.cb_contact.TabIndex = 185;
@@ -297,7 +298,7 @@
             // 
             // Btn__Contact_Search
             // 
-            this.Btn__Contact_Search.Location = new System.Drawing.Point(737, 625);
+            this.Btn__Contact_Search.Location = new System.Drawing.Point(701, 625);
             this.Btn__Contact_Search.Name = "Btn__Contact_Search";
             this.Btn__Contact_Search.Size = new System.Drawing.Size(75, 53);
             this.Btn__Contact_Search.TabIndex = 183;
@@ -308,7 +309,7 @@
             // 
             // tb_contact
             // 
-            this.tb_contact.Location = new System.Drawing.Point(546, 642);
+            this.tb_contact.Location = new System.Drawing.Point(510, 642);
             this.tb_contact.Name = "tb_contact";
             this.tb_contact.Size = new System.Drawing.Size(170, 20);
             this.tb_contact.TabIndex = 182;
@@ -316,7 +317,7 @@
             // 
             // Btn_Contact_Save
             // 
-            this.Btn_Contact_Save.Location = new System.Drawing.Point(1145, 627);
+            this.Btn_Contact_Save.Location = new System.Drawing.Point(1085, 627);
             this.Btn_Contact_Save.Name = "Btn_Contact_Save";
             this.Btn_Contact_Save.Size = new System.Drawing.Size(75, 53);
             this.Btn_Contact_Save.TabIndex = 181;
@@ -551,7 +552,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(345, 647);
+            this.label2.Location = new System.Drawing.Point(309, 647);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 186;
@@ -560,7 +561,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(849, 631);
+            this.label3.Location = new System.Drawing.Point(813, 631);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 189;
@@ -568,7 +569,7 @@
             // 
             // btn_contact_dedupe
             // 
-            this.btn_contact_dedupe.Location = new System.Drawing.Point(1036, 627);
+            this.btn_contact_dedupe.Location = new System.Drawing.Point(1000, 627);
             this.btn_contact_dedupe.Name = "btn_contact_dedupe";
             this.btn_contact_dedupe.Size = new System.Drawing.Size(75, 53);
             this.btn_contact_dedupe.TabIndex = 191;
@@ -579,7 +580,7 @@
             // 
             // btn_profile_dedupe
             // 
-            this.btn_profile_dedupe.Location = new System.Drawing.Point(1036, 627);
+            this.btn_profile_dedupe.Location = new System.Drawing.Point(1000, 627);
             this.btn_profile_dedupe.Name = "btn_profile_dedupe";
             this.btn_profile_dedupe.Size = new System.Drawing.Size(75, 53);
             this.btn_profile_dedupe.TabIndex = 190;
@@ -601,7 +602,7 @@
             "Phone2",
             "Phone3",
             "Website"});
-            this.cb_profile_dedupe.Location = new System.Drawing.Point(910, 627);
+            this.cb_profile_dedupe.Location = new System.Drawing.Point(874, 627);
             this.cb_profile_dedupe.Name = "cb_profile_dedupe";
             this.cb_profile_dedupe.Size = new System.Drawing.Size(120, 49);
             this.cb_profile_dedupe.TabIndex = 192;
@@ -633,17 +634,28 @@
             "companyPhone3",
             "contactPhone1",
             "contactPhone2"});
-            this.cb_contact_dedupe.Location = new System.Drawing.Point(910, 627);
+            this.cb_contact_dedupe.Location = new System.Drawing.Point(874, 627);
             this.cb_contact_dedupe.Name = "cb_contact_dedupe";
             this.cb_contact_dedupe.Size = new System.Drawing.Size(120, 49);
             this.cb_contact_dedupe.TabIndex = 193;
             this.cb_contact_dedupe.Visible = false;
+            // 
+            // btn_email
+            // 
+            this.btn_email.Location = new System.Drawing.Point(1168, 627);
+            this.btn_email.Name = "btn_email";
+            this.btn_email.Size = new System.Drawing.Size(75, 53);
+            this.btn_email.TabIndex = 194;
+            this.btn_email.Text = "Email";
+            this.btn_email.UseVisualStyleBackColor = true;
+            this.btn_email.Click += new System.EventHandler(this.btn_email_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1257, 692);
+            this.Controls.Add(this.btn_email);
             this.Controls.Add(this.cb_contact_dedupe);
             this.Controls.Add(this.cb_profile_dedupe);
             this.Controls.Add(this.btn_contact_dedupe);
@@ -730,6 +742,7 @@
         private System.Windows.Forms.Button btn_profile_dedupe;
         private System.Windows.Forms.CheckedListBox cb_profile_dedupe;
         private System.Windows.Forms.CheckedListBox cb_contact_dedupe;
+        private System.Windows.Forms.Button btn_email;
     }
 }
 

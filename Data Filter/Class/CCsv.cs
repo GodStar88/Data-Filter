@@ -10,18 +10,30 @@ namespace Data_Filter
 {
     class CCsv
     {
-        /// <summary>
-        /// Append CSV
-        /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="path"></param>
-        public void AppendCsv(CProfile profile, string path)
+        public class CEmail
         {
-            List<CProfile> list = new List<CProfile>();
-            list.AddRange(ReadCsv(path));
-            list.Add(profile);
-            SaveCsv(list, path);
+            public string Name { get; set; }
+            public string Email { get; set; }
         }
+
+        
+
+        public void SaveCsv<T>(List<T> list, string path)
+        {
+            using (StreamWriter sw = new StreamWriter(path))
+            using (CsvWriter cw = new CsvWriter(sw))
+            {
+                cw.WriteHeader<T>();
+                cw.NextRecord();
+                foreach (T item in list)
+                {
+                    cw.WriteRecord<T>(item);
+                    cw.NextRecord();
+                }
+            }
+        }
+
+
         /// <summary>
         /// Save CSV
         /// </summary>

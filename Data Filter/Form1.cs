@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using static Data_Filter.CCsv;
 
 namespace Data_Filter
 {
@@ -505,6 +506,61 @@ namespace Data_Filter
                 dataGridView_Contact.DataSource = obj;
                 this.Text = "Data Manager 1.02";
             });
+        }
+
+        private void btn_email_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+            savefile.FileName = date + "- email.csv";
+            savefile.Filter = "csv files|*.csv";
+            string path = "";
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                path = Path.GetFullPath(savefile.FileName);
+                List<CEmail> list = new List<CEmail>();
+                for (int i = 0; i < dataGridView_Profile.Rows.Count; i++)
+                {
+                    try
+                    {
+                        CEmail email = new CEmail()
+                        {
+                            Name = dataGridView_Profile.Rows[i].Cells[1].Value.ToString(),
+                            Email = dataGridView_Profile.Rows[i].Cells[4].Value.ToString(),
+                        };
+
+                        if (email.Email != "" && email.Email != null)
+                        {
+                            list.Add(email);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+
+                for (int i = 0; i < dataGridView_Contact.Rows.Count; i++)
+                {
+                    try
+                    {
+                        CEmail email = new CEmail()
+                        {
+                            Name = dataGridView_Contact.Rows[i].Cells[2].Value.ToString(),
+                            Email = dataGridView_Contact.Rows[i].Cells[15].Value.ToString(),
+                        };
+
+                        if (email.Email != "" && email.Email != null)
+                        {
+                            list.Add(email);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    
+                }
+                new CCsv().SaveCsv(list, path);
+            }
         }
     }
 }
