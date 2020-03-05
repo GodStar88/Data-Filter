@@ -135,41 +135,82 @@ namespace Data_Filter
                 var csv = new CsvReader(textReader);
                 while (csv.Read())
                 {
-                    try
+                    do
                     {
-                        var record = csv.Context.Record;
-                        var profile = new CContact();
-                        profile.List = record[1];
-                        profile.Name = record[2];
-                        profile.firstName = record[3];
-                        profile.lastName = record[5];
-                        profile.Title = record[6];
-                        profile.LIProfileUrl = record[7];
-                        profile.CompanyLIProfileUrl = record[8];
-                        profile.Company = record[10];
-                        profile.CompanyIndustry = record[11];
-                        profile.Website = record[15];
-                        profile.CompanyLocation = record[16];
-                        profile.companyStreet1 = record[17];
-                        profile.ContactLocation = record[26];
-                        profile.Phone = record[36];
-                        profile.Email = record[37];
-                        profile.email1 = record[38];
-                        profile.email2 = record[41];
-                        profile.PersonalEmail = record[44];
-                        profile.companyPhone1 = record[51];
-                        profile.companyPhone2 = record[53];
-                        profile.companyPhone3 = record[55];
-                        profile.contactPhone1 = record[57];
-                        profile.contactPhone2 = record[59];
-                        if (profile.List != "List")
+                        try
                         {
-                            list.Add(profile);
+                            var record = csv.Context.Record;
+                            var profile = new CContact();
+                            profile.List = record[1];
+                            profile.Name = record[2];
+                            profile.firstName = record[3];
+                            profile.lastName = record[5];
+                            profile.Title = record[6];
+                            profile.LIProfileUrl = record[7];
+                            profile.CompanyLIProfileUrl = record[8];
+                            profile.Company = record[10];
+                            profile.CompanyIndustry = record[11];
+                            profile.Website = record[15];
+                            profile.CompanyLocation = record[16];
+                            profile.companyStreet1 = record[17];
+                            profile.ContactLocation = record[26];
+                            profile.Phone = record[36];
+                            profile.Email = record[37];
+                            profile.email1 = record[38];
+                            profile.email2 = record[41];
+                            profile.PersonalEmail = record[44];
+                            profile.companyPhone1 = record[51];
+                            profile.companyPhone2 = record[53];
+                            profile.companyPhone3 = record[55];
+                            profile.contactPhone1 = record[57];
+                            profile.contactPhone2 = record[59];
+                            if (profile.List != "List")
+                            {
+                                list.Add(profile);
+                            }
+                            break;
                         }
-                    }
-                    catch (Exception)
-                    {
-                    }
+                        catch (Exception)
+                        {
+                        }
+
+                        try
+                        {
+                            var record = csv.Context.Record;
+                            var profile = new CContact();
+                            profile.List = record[0];
+                            profile.Name = record[1];
+                            profile.firstName = record[2];
+                            profile.lastName = record[3];
+                            profile.Title = record[4];
+                            profile.LIProfileUrl = record[5];
+                            profile.CompanyLIProfileUrl = record[6];
+                            profile.Company = record[7];
+                            profile.CompanyIndustry = record[8];
+                            profile.Website = record[9];
+                            profile.CompanyLocation = record[10];
+                            profile.companyStreet1 = record[11];
+                            profile.ContactLocation = record[12];
+                            profile.Phone = record[13];
+                            profile.Email = record[14];
+                            profile.email1 = record[15];
+                            profile.email2 = record[16];
+                            profile.PersonalEmail = record[17];
+                            profile.companyPhone1 = record[18];
+                            profile.companyPhone2 = record[19];
+                            profile.companyPhone3 = record[20];
+                            profile.contactPhone1 = record[21];
+                            profile.contactPhone2 = record[22];
+                            if (profile.List != "List")
+                            {
+                                list.Add(profile);
+                            }
+                            break;
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    } while (false);
 
                 }
                 textReader.Close();

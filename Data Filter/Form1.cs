@@ -149,7 +149,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Profile.AutoGenerateColumns = false;
                 dataGridView_Profile.DataSource = obj;
-                this.Text = "Data Manager 1.02";
+                this.Text = "Data Manager 1.03";
             });
         }
 
@@ -359,13 +359,13 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
-                this.Text = "Data Manager 1.02";
+                this.Text = "Data Manager 1.03";
             });
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            this.Text = "Data Manager 1.02";
+            this.Text = "Data Manager 1.03";
         }
 
         private List<ProfileInfo> GetProfileForCombo()
@@ -421,7 +421,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Profile.AutoGenerateColumns = false;
                 dataGridView_Profile.DataSource = obj;
-                this.Text = "Data Manager 1.02";
+                this.Text = "Data Manager 1.03";
             });
         }
 
@@ -504,7 +504,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
-                this.Text = "Data Manager 1.02";
+                this.Text = "Data Manager 1.03";
             });
         }
 
@@ -525,7 +525,7 @@ namespace Data_Filter
                     {
                         CEmail email = new CEmail()
                         {
-                            Name = dataGridView_Profile.Rows[i].Cells[1].Value.ToString(),
+                            Name = dataGridView_Profile.Rows[i].Cells[1].Value.ToString().Split(' ')[0],
                             Email = dataGridView_Profile.Rows[i].Cells[4].Value.ToString(),
                         };
 
@@ -545,7 +545,7 @@ namespace Data_Filter
                     {
                         CEmail email = new CEmail()
                         {
-                            Name = dataGridView_Contact.Rows[i].Cells[2].Value.ToString(),
+                            Name = dataGridView_Contact.Rows[i].Cells[2].Value.ToString().Split(' ')[0],
                             Email = dataGridView_Contact.Rows[i].Cells[15].Value.ToString(),
                         };
 
@@ -561,6 +561,82 @@ namespace Data_Filter
                 }
                 new CCsv().SaveCsv(list, path);
             }
+        }
+
+        private void btn_merge_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure to merge?", "Merge Email", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+            int count = 0;
+
+            List<ContactInfo> obj = (from m in ContactList.Where(delegate (CContact m)
+            {
+                if (m.email1 != m.email2 && m.email2 != "")
+                {
+                    m.email1 = m.email2;
+                    m.email2 = "";
+                }
+
+                if (m.email1 != m.Email && m.email1 != "")
+                {
+                    m.Email = m.email1;
+                    m.email1 = "";
+                }
+
+                if (m.PersonalEmail != m.Email && m.PersonalEmail != "" && m.PersonalEmail != "Researching...")
+                {
+                    m.Email = m.PersonalEmail;
+                    m.PersonalEmail = "";
+                }
+
+                if (m.Email == "Researching...")
+                {
+                    m.Email = "";
+                }
+
+                count++;
+                return true;
+            })
+                                     select new ContactInfo()
+                                     {
+                                         No = count.ToString(),
+                                         List = m.List,
+                                         Name = m.Name,
+                                         firstName = m.firstName,
+                                         lastName = m.lastName,
+                                         Title = m.Title,
+                                         LIProfileUrl = m.LIProfileUrl,
+                                         CompanyLIProfileUrl = m.CompanyLIProfileUrl,
+                                         Company = m.Company,
+                                         CompanyIndustry = m.CompanyIndustry,
+                                         Website = m.Website,
+                                         CompanyLocation = m.CompanyLocation,
+                                         companyStreet1 = m.companyStreet1,
+                                         ContactLocation = m.ContactLocation,
+                                         Phone = m.Phone,
+                                         Email = m.Email,
+                                         email1 = m.email1,
+                                         email2 = m.email2,
+                                         PersonalEmail = m.PersonalEmail,
+                                         companyPhone1 = m.companyPhone1,
+                                         companyPhone2 = m.companyPhone2,
+                                         companyPhone3 = m.companyPhone3,
+                                         contactPhone1 = m.contactPhone1,
+                                         contactPhone2 = m.contactPhone2,
+                                     }).ToList();
+
+            CheckForIllegalCrossThreadCalls = false;
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.Text = "Data Manager  Loading csv file";
+                dataGridView_Contact.AutoGenerateColumns = false;
+                dataGridView_Contact.DataSource = obj;
+                this.Text = "Data Manager 1.03";
+            });
         }
     }
 }
