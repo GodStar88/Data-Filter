@@ -93,6 +93,8 @@
             this.cb_contact_dedupe = new System.Windows.Forms.CheckedListBox();
             this.btn_email = new System.Windows.Forms.Button();
             this.btn_merge = new System.Windows.Forms.Button();
+            this.cb_email = new System.Windows.Forms.CheckBox();
+            this.cb_phone = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Profile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Contact)).BeginInit();
             this.SuspendLayout();
@@ -245,7 +247,7 @@
             // 
             // tb_profile
             // 
-            this.tb_profile.Location = new System.Drawing.Point(468, 642);
+            this.tb_profile.Location = new System.Drawing.Point(469, 658);
             this.tb_profile.Name = "tb_profile";
             this.tb_profile.Size = new System.Drawing.Size(170, 20);
             this.tb_profile.TabIndex = 174;
@@ -278,7 +280,7 @@
             "Email",
             "Phone",
             "Website"});
-            this.cb_profile.Location = new System.Drawing.Point(340, 642);
+            this.cb_profile.Location = new System.Drawing.Point(518, 627);
             this.cb_profile.Name = "cb_profile";
             this.cb_profile.Size = new System.Drawing.Size(121, 21);
             this.cb_profile.TabIndex = 178;
@@ -291,7 +293,7 @@
             "Title",
             "Email",
             "Phone"});
-            this.cb_contact.Location = new System.Drawing.Point(340, 642);
+            this.cb_contact.Location = new System.Drawing.Point(518, 627);
             this.cb_contact.Name = "cb_contact";
             this.cb_contact.Size = new System.Drawing.Size(121, 21);
             this.cb_contact.TabIndex = 185;
@@ -310,7 +312,7 @@
             // 
             // tb_contact
             // 
-            this.tb_contact.Location = new System.Drawing.Point(468, 642);
+            this.tb_contact.Location = new System.Drawing.Point(469, 658);
             this.tb_contact.Name = "tb_contact";
             this.tb_contact.Size = new System.Drawing.Size(170, 20);
             this.tb_contact.TabIndex = 182;
@@ -329,7 +331,7 @@
             // 
             // Btn_Contact_Open
             // 
-            this.Btn_Contact_Open.Location = new System.Drawing.Point(157, 626);
+            this.Btn_Contact_Open.Location = new System.Drawing.Point(147, 626);
             this.Btn_Contact_Open.Name = "Btn_Contact_Open";
             this.Btn_Contact_Open.Size = new System.Drawing.Size(128, 53);
             this.Btn_Contact_Open.TabIndex = 180;
@@ -513,6 +515,7 @@
             this.dataGridViewTextBoxColumn6.DataPropertyName = "email2";
             this.dataGridViewTextBoxColumn6.HeaderText = "email2";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Visible = false;
             // 
             // PersonalEmail
             // 
@@ -553,7 +556,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(293, 647);
+            this.label2.Location = new System.Drawing.Point(471, 632);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 186;
@@ -661,11 +664,33 @@
             this.btn_merge.UseVisualStyleBackColor = true;
             this.btn_merge.Click += new System.EventHandler(this.btn_merge_Click);
             // 
+            // cb_email
+            // 
+            this.cb_email.AutoSize = true;
+            this.cb_email.Location = new System.Drawing.Point(285, 632);
+            this.cb_email.Name = "cb_email";
+            this.cb_email.Size = new System.Drawing.Size(163, 17);
+            this.cb_email.TabIndex = 196;
+            this.cb_email.Text = "Exclude entries with no Email";
+            this.cb_email.UseVisualStyleBackColor = true;
+            // 
+            // cb_phone
+            // 
+            this.cb_phone.AutoSize = true;
+            this.cb_phone.Location = new System.Drawing.Point(285, 655);
+            this.cb_phone.Name = "cb_phone";
+            this.cb_phone.Size = new System.Drawing.Size(168, 17);
+            this.cb_phone.TabIndex = 197;
+            this.cb_phone.Text = "Exclude entries with no phone";
+            this.cb_phone.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1257, 692);
+            this.Controls.Add(this.cb_phone);
+            this.Controls.Add(this.cb_email);
             this.Controls.Add(this.btn_merge);
             this.Controls.Add(this.btn_email);
             this.Controls.Add(this.cb_contact_dedupe);
@@ -724,6 +749,14 @@
         private System.Windows.Forms.Button Btn_Contact_Save;
         private System.Windows.Forms.Button Btn_Contact_Open;
         private System.Windows.Forms.DataGridView dataGridView_Contact;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_contact_dedupe;
+        private System.Windows.Forms.Button btn_profile_dedupe;
+        private System.Windows.Forms.CheckedListBox cb_profile_dedupe;
+        private System.Windows.Forms.CheckedListBox cb_contact_dedupe;
+        private System.Windows.Forms.Button btn_email;
+        private System.Windows.Forms.Button btn_merge;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn List;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -748,14 +781,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn companyPhone3;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactPhone1;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactPhone2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_contact_dedupe;
-        private System.Windows.Forms.Button btn_profile_dedupe;
-        private System.Windows.Forms.CheckedListBox cb_profile_dedupe;
-        private System.Windows.Forms.CheckedListBox cb_contact_dedupe;
-        private System.Windows.Forms.Button btn_email;
-        private System.Windows.Forms.Button btn_merge;
+        private System.Windows.Forms.CheckBox cb_email;
+        private System.Windows.Forms.CheckBox cb_phone;
     }
 }
 

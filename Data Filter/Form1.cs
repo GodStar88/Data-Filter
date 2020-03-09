@@ -149,7 +149,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Profile.AutoGenerateColumns = false;
                 dataGridView_Profile.DataSource = obj;
-                this.Text = "Data Manager 1.03";
+                this.Text = "Data Manager 1.04";
             });
         }
 
@@ -232,10 +232,9 @@ namespace Data_Filter
                 string path = Path.GetFullPath(theDialog.FileName);
                 Settings.Default["OpenURL"] = Path.GetDirectoryName(theDialog.FileName);
                 Settings.Default.Save();
-                ContactList = new CCsv().ReadCsvContact(path);
+                ContactList = new CCsv().ReadCsvContact(path, cb_phone.Checked, cb_email.Checked);
                 ContactProcess = new Thread(() => LoadContact(""));
                 ContactProcess.Start();
-                
             }
         }
 
@@ -359,13 +358,13 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
-                this.Text = "Data Manager 1.03";
+                this.Text = "Data Manager 1.04";
             });
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            this.Text = "Data Manager 1.03";
+            this.Text = "Data Manager 1.04";
         }
 
         private List<ProfileInfo> GetProfileForCombo()
@@ -421,7 +420,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Profile.AutoGenerateColumns = false;
                 dataGridView_Profile.DataSource = obj;
-                this.Text = "Data Manager 1.03";
+                this.Text = "Data Manager 1.04";
             });
         }
 
@@ -504,7 +503,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
-                this.Text = "Data Manager 1.03";
+                this.Text = "Data Manager 1.04";
             });
         }
 
@@ -635,7 +634,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
-                this.Text = "Data Manager 1.03";
+                this.Text = "Data Manager 1.04";
             });
         }
     }

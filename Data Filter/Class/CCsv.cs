@@ -99,7 +99,7 @@ namespace Data_Filter
         public void AppendCsvContact(CContact profile, string path)
         {
             List<CContact> list = new List<CContact>();
-            list.AddRange(ReadCsvContact(path));
+            // list.AddRange(ReadCsvContact(path));
             list.Add(profile);
             SaveCsvContact(list, path);
         }
@@ -127,7 +127,7 @@ namespace Data_Filter
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public List<CContact> ReadCsvContact(string path)
+        public List<CContact> ReadCsvContact(string path, bool phone, bool email)
         {
             List<CContact> list = new List<CContact>();
             using (var textReader = File.OpenText(path))
@@ -164,7 +164,7 @@ namespace Data_Filter
                             profile.companyPhone3 = record[55];
                             profile.contactPhone1 = record[57];
                             profile.contactPhone2 = record[59];
-                            if (profile.List != "List")
+                            if (profile.List != "List" && ((profile.Phone != "" && phone) || !phone) && ((profile.Email != "" && email) || !email))
                             {
                                 list.Add(profile);
                             }

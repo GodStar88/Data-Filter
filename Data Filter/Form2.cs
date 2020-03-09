@@ -39,7 +39,7 @@ namespace Data_Filter
                 string path = Path.GetFullPath(theDialog.FileName);
                 Settings.Default["OpenURL"] = Path.GetDirectoryName(theDialog.FileName);
                 Settings.Default.Save();
-                ContactList = new CCsv().ReadCsvContact(path);
+                // ContactList = new CCsv().ReadCsvContact(path);
                 ContactProcess = new Thread(() => LoadContact(""));
                 ContactProcess.Start();                
             }
