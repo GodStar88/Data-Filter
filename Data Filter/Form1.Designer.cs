@@ -29,15 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
+            this.btn_exclude = new System.Windows.Forms.Button();
+            this.cb_phone = new System.Windows.Forms.CheckBox();
+            this.cb_email = new System.Windows.Forms.CheckBox();
+            this.btn_merge = new System.Windows.Forms.Button();
+            this.cb_contact_dedupe = new System.Windows.Forms.CheckedListBox();
+            this.cb_profile_dedupe = new System.Windows.Forms.CheckedListBox();
+            this.btn_profile_dedupe = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.phoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cb_contact = new System.Windows.Forms.ComboBox();
+            this.tb_contact = new System.Windows.Forms.TextBox();
+            this.Btn_Contact_Open = new System.Windows.Forms.Button();
+            this.cb_profile = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Btn_Save = new System.Windows.Forms.Button();
+            this.Btn_Open = new System.Windows.Forms.Button();
+            this.tb_profile = new System.Windows.Forms.TextBox();
+            this.Btn__Contact_Search = new System.Windows.Forms.Button();
+            this.Btn_Search = new System.Windows.Forms.Button();
+            this.btn_contact_dedupe = new System.Windows.Forms.Button();
+            this.Btn_Contact_Save = new System.Windows.Forms.Button();
+            this.btn_email = new System.Windows.Forms.Button();
             this.dataGridView_Profile = new System.Windows.Forms.DataGridView();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,17 +75,6 @@
             this.Phone2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phone3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Website = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Btn_Open = new System.Windows.Forms.Button();
-            this.Btn_Save = new System.Windows.Forms.Button();
-            this.tb_profile = new System.Windows.Forms.TextBox();
-            this.Btn_Search = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cb_profile = new System.Windows.Forms.ComboBox();
-            this.cb_contact = new System.Windows.Forms.ComboBox();
-            this.Btn__Contact_Search = new System.Windows.Forms.Button();
-            this.tb_contact = new System.Windows.Forms.TextBox();
-            this.Btn_Contact_Save = new System.Windows.Forms.Button();
-            this.Btn_Contact_Open = new System.Windows.Forms.Button();
             this.dataGridView_Contact = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.List = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,39 +100,303 @@
             this.companyPhone3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactPhone1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactPhone2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btn_contact_dedupe = new System.Windows.Forms.Button();
-            this.btn_profile_dedupe = new System.Windows.Forms.Button();
-            this.cb_profile_dedupe = new System.Windows.Forms.CheckedListBox();
-            this.cb_contact_dedupe = new System.Windows.Forms.CheckedListBox();
-            this.btn_email = new System.Windows.Forms.Button();
-            this.btn_merge = new System.Windows.Forms.Button();
-            this.cb_email = new System.Windows.Forms.CheckBox();
-            this.cb_phone = new System.Windows.Forms.CheckBox();
-            this.btn_exclude = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.phoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Profile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Contact)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btn_exclude
+            // 
+            this.btn_exclude.Location = new System.Drawing.Point(361, 632);
+            this.btn_exclude.Name = "btn_exclude";
+            this.btn_exclude.Size = new System.Drawing.Size(75, 53);
+            this.btn_exclude.TabIndex = 222;
+            this.btn_exclude.Text = "Exclude";
+            this.btn_exclude.UseVisualStyleBackColor = true;
+            this.btn_exclude.Click += new System.EventHandler(this.btn_exclude_Click);
+            // 
+            // cb_phone
+            // 
+            this.cb_phone.AutoSize = true;
+            this.cb_phone.BackColor = System.Drawing.Color.White;
+            this.cb_phone.Location = new System.Drawing.Point(290, 662);
+            this.cb_phone.Name = "cb_phone";
+            this.cb_phone.Size = new System.Drawing.Size(71, 17);
+            this.cb_phone.TabIndex = 221;
+            this.cb_phone.Text = "no phone";
+            this.cb_phone.UseVisualStyleBackColor = false;
+            // 
+            // cb_email
+            // 
+            this.cb_email.AutoSize = true;
+            this.cb_email.BackColor = System.Drawing.Color.White;
+            this.cb_email.Location = new System.Drawing.Point(290, 638);
+            this.cb_email.Name = "cb_email";
+            this.cb_email.Size = new System.Drawing.Size(66, 17);
+            this.cb_email.TabIndex = 220;
+            this.cb_email.Text = "no Email";
+            this.cb_email.UseVisualStyleBackColor = false;
+            // 
+            // btn_merge
+            // 
+            this.btn_merge.Location = new System.Drawing.Point(1162, 632);
+            this.btn_merge.Name = "btn_merge";
+            this.btn_merge.Size = new System.Drawing.Size(75, 53);
+            this.btn_merge.TabIndex = 219;
+            this.btn_merge.Text = "Merge";
+            this.btn_merge.UseVisualStyleBackColor = true;
+            this.btn_merge.Click += new System.EventHandler(this.btn_merge_Click);
+            // 
+            // cb_contact_dedupe
+            // 
+            this.cb_contact_dedupe.FormattingEnabled = true;
+            this.cb_contact_dedupe.Items.AddRange(new object[] {
+            "List",
+            "Name",
+            "firstName",
+            "lastName",
+            "Title",
+            "LIProfileUrl",
+            "CompanyLIProfileUrl",
+            "Company",
+            "CompanyIndustry",
+            "Website",
+            "CompanyLocation",
+            "companyStreet1",
+            "ContactLocation",
+            "Phone",
+            "Email",
+            "email1",
+            "email2",
+            "PersonalEmail",
+            "companyPhone1",
+            "companyPhone2",
+            "companyPhone3",
+            "contactPhone1",
+            "contactPhone2"});
+            this.cb_contact_dedupe.Location = new System.Drawing.Point(792, 634);
+            this.cb_contact_dedupe.Name = "cb_contact_dedupe";
+            this.cb_contact_dedupe.Size = new System.Drawing.Size(120, 49);
+            this.cb_contact_dedupe.TabIndex = 217;
+            this.cb_contact_dedupe.Visible = false;
+            // 
+            // cb_profile_dedupe
+            // 
+            this.cb_profile_dedupe.FormattingEnabled = true;
+            this.cb_profile_dedupe.Items.AddRange(new object[] {
+            "Name",
+            "Title",
+            "Service",
+            "Email1",
+            "Email2",
+            "Email3",
+            "Phone1",
+            "Phone2",
+            "Phone3",
+            "Website"});
+            this.cb_profile_dedupe.Location = new System.Drawing.Point(792, 634);
+            this.cb_profile_dedupe.Name = "cb_profile_dedupe";
+            this.cb_profile_dedupe.Size = new System.Drawing.Size(120, 49);
+            this.cb_profile_dedupe.TabIndex = 216;
+            // 
+            // btn_profile_dedupe
+            // 
+            this.btn_profile_dedupe.Location = new System.Drawing.Point(919, 632);
+            this.btn_profile_dedupe.Name = "btn_profile_dedupe";
+            this.btn_profile_dedupe.Size = new System.Drawing.Size(75, 53);
+            this.btn_profile_dedupe.TabIndex = 214;
+            this.btn_profile_dedupe.Text = "Dedupe";
+            this.btn_profile_dedupe.UseVisualStyleBackColor = true;
+            this.btn_profile_dedupe.Click += new System.EventHandler(this.btn_profile_dedupe_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(742, 636);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 213;
+            this.label3.Text = "Dedupe";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(475, 640);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 212;
+            this.label2.Text = "Search";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.emailToolStripMenuItem,
+            this.phoneToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 48);
+            // 
+            // emailToolStripMenuItem
+            // 
+            this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
+            this.emailToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.emailToolStripMenuItem.Text = "Email";
+            // 
+            // phoneToolStripMenuItem
+            // 
+            this.phoneToolStripMenuItem.Name = "phoneToolStripMenuItem";
+            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.phoneToolStripMenuItem.Text = "Phone";
+            // 
+            // cb_contact
+            // 
+            this.cb_contact.FormattingEnabled = true;
+            this.cb_contact.Items.AddRange(new object[] {
+            "Name",
+            "Title",
+            "Email",
+            "Phone"});
+            this.cb_contact.Location = new System.Drawing.Point(522, 636);
+            this.cb_contact.Name = "cb_contact";
+            this.cb_contact.Size = new System.Drawing.Size(121, 21);
+            this.cb_contact.TabIndex = 211;
+            this.cb_contact.Visible = false;
+            // 
+            // tb_contact
+            // 
+            this.tb_contact.Location = new System.Drawing.Point(473, 662);
+            this.tb_contact.Name = "tb_contact";
+            this.tb_contact.Size = new System.Drawing.Size(170, 20);
+            this.tb_contact.TabIndex = 209;
+            this.tb_contact.Visible = false;
+            // 
+            // Btn_Contact_Open
+            // 
+            this.Btn_Contact_Open.Location = new System.Drawing.Point(140, 632);
+            this.Btn_Contact_Open.Name = "Btn_Contact_Open";
+            this.Btn_Contact_Open.Size = new System.Drawing.Size(128, 53);
+            this.Btn_Contact_Open.TabIndex = 207;
+            this.Btn_Contact_Open.Text = "Seamless Data Filter";
+            this.Btn_Contact_Open.UseVisualStyleBackColor = true;
+            this.Btn_Contact_Open.Click += new System.EventHandler(this.Btn_Contact_Open_Click);
+            // 
+            // cb_profile
+            // 
+            this.cb_profile.FormattingEnabled = true;
+            this.cb_profile.Items.AddRange(new object[] {
+            "Name",
+            "Title",
+            "Service",
+            "Email",
+            "Phone",
+            "Website"});
+            this.cb_profile.Location = new System.Drawing.Point(522, 636);
+            this.cb_profile.Name = "cb_profile";
+            this.cb_profile.Size = new System.Drawing.Size(121, 21);
+            this.cb_profile.TabIndex = 205;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 651);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 204;
+            // 
+            // Btn_Save
+            // 
+            this.Btn_Save.Location = new System.Drawing.Point(1000, 632);
+            this.Btn_Save.Name = "Btn_Save";
+            this.Btn_Save.Size = new System.Drawing.Size(75, 53);
+            this.Btn_Save.TabIndex = 201;
+            this.Btn_Save.Text = "Save";
+            this.Btn_Save.UseVisualStyleBackColor = true;
+            this.Btn_Save.Click += new System.EventHandler(this.Btn_Save_Click);
+            // 
+            // Btn_Open
+            // 
+            this.Btn_Open.Location = new System.Drawing.Point(6, 632);
+            this.Btn_Open.Name = "Btn_Open";
+            this.Btn_Open.Size = new System.Drawing.Size(128, 53);
+            this.Btn_Open.TabIndex = 200;
+            this.Btn_Open.Text = "Text Filter";
+            this.Btn_Open.UseVisualStyleBackColor = true;
+            this.Btn_Open.Click += new System.EventHandler(this.Btn_Open_Click);
+            // 
+            // tb_profile
+            // 
+            this.tb_profile.Location = new System.Drawing.Point(473, 662);
+            this.tb_profile.Name = "tb_profile";
+            this.tb_profile.Size = new System.Drawing.Size(170, 20);
+            this.tb_profile.TabIndex = 202;
+            // 
+            // Btn__Contact_Search
+            // 
+            this.Btn__Contact_Search.Location = new System.Drawing.Point(649, 632);
+            this.Btn__Contact_Search.Name = "Btn__Contact_Search";
+            this.Btn__Contact_Search.Size = new System.Drawing.Size(75, 53);
+            this.Btn__Contact_Search.TabIndex = 225;
+            this.Btn__Contact_Search.Text = "Search";
+            this.Btn__Contact_Search.UseVisualStyleBackColor = true;
+            this.Btn__Contact_Search.Visible = false;
+            // 
+            // Btn_Search
+            // 
+            this.Btn_Search.Location = new System.Drawing.Point(649, 632);
+            this.Btn_Search.Name = "Btn_Search";
+            this.Btn_Search.Size = new System.Drawing.Size(75, 53);
+            this.Btn_Search.TabIndex = 223;
+            this.Btn_Search.Text = "Search";
+            this.Btn_Search.UseVisualStyleBackColor = true;
+            // 
+            // btn_contact_dedupe
+            // 
+            this.btn_contact_dedupe.Location = new System.Drawing.Point(919, 632);
+            this.btn_contact_dedupe.Name = "btn_contact_dedupe";
+            this.btn_contact_dedupe.Size = new System.Drawing.Size(75, 53);
+            this.btn_contact_dedupe.TabIndex = 226;
+            this.btn_contact_dedupe.Text = "Dedupe";
+            this.btn_contact_dedupe.UseVisualStyleBackColor = true;
+            this.btn_contact_dedupe.Visible = false;
+            // 
+            // Btn_Contact_Save
+            // 
+            this.Btn_Contact_Save.Location = new System.Drawing.Point(1000, 632);
+            this.Btn_Contact_Save.Name = "Btn_Contact_Save";
+            this.Btn_Contact_Save.Size = new System.Drawing.Size(75, 53);
+            this.Btn_Contact_Save.TabIndex = 224;
+            this.Btn_Contact_Save.Text = "Save";
+            this.Btn_Contact_Save.UseVisualStyleBackColor = true;
+            this.Btn_Contact_Save.Visible = false;
+            // 
+            // btn_email
+            // 
+            this.btn_email.Location = new System.Drawing.Point(1081, 632);
+            this.btn_email.Name = "btn_email";
+            this.btn_email.Size = new System.Drawing.Size(75, 53);
+            this.btn_email.TabIndex = 227;
+            this.btn_email.Text = "Email";
+            this.btn_email.UseVisualStyleBackColor = true;
             // 
             // dataGridView_Profile
             // 
             this.dataGridView_Profile.AllowUserToAddRows = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridView_Profile.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridView_Profile.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView_Profile.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Profile.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Profile.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView_Profile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Profile.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.No,
@@ -132,27 +410,27 @@
             this.Phone2,
             this.Phone3,
             this.Website});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Profile.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridView_Profile.Location = new System.Drawing.Point(12, 12);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Profile.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView_Profile.Location = new System.Drawing.Point(6, 6);
             this.dataGridView_Profile.Name = "dataGridView_Profile";
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Profile.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Profile.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView_Profile.RowHeadersVisible = false;
             this.dataGridView_Profile.RowHeadersWidth = 20;
             this.dataGridView_Profile.Size = new System.Drawing.Size(1231, 608);
-            this.dataGridView_Profile.TabIndex = 169;
+            this.dataGridView_Profile.TabIndex = 199;
             // 
             // No
             // 
@@ -231,134 +509,20 @@
             this.Website.Name = "Website";
             this.Website.Width = 150;
             // 
-            // Btn_Open
-            // 
-            this.Btn_Open.Location = new System.Drawing.Point(12, 626);
-            this.Btn_Open.Name = "Btn_Open";
-            this.Btn_Open.Size = new System.Drawing.Size(128, 53);
-            this.Btn_Open.TabIndex = 171;
-            this.Btn_Open.Text = "Text Filter";
-            this.Btn_Open.UseVisualStyleBackColor = true;
-            this.Btn_Open.Click += new System.EventHandler(this.Btn_Open_Click);
-            // 
-            // Btn_Save
-            // 
-            this.Btn_Save.Location = new System.Drawing.Point(1001, 627);
-            this.Btn_Save.Name = "Btn_Save";
-            this.Btn_Save.Size = new System.Drawing.Size(75, 53);
-            this.Btn_Save.TabIndex = 172;
-            this.Btn_Save.Text = "Save";
-            this.Btn_Save.UseVisualStyleBackColor = true;
-            this.Btn_Save.Click += new System.EventHandler(this.Btn_Save_Click);
-            // 
-            // tb_profile
-            // 
-            this.tb_profile.Location = new System.Drawing.Point(469, 658);
-            this.tb_profile.Name = "tb_profile";
-            this.tb_profile.Size = new System.Drawing.Size(170, 20);
-            this.tb_profile.TabIndex = 174;
-            // 
-            // Btn_Search
-            // 
-            this.Btn_Search.Location = new System.Drawing.Point(645, 625);
-            this.Btn_Search.Name = "Btn_Search";
-            this.Btn_Search.Size = new System.Drawing.Size(75, 53);
-            this.Btn_Search.TabIndex = 175;
-            this.Btn_Search.Text = "Search";
-            this.Btn_Search.UseVisualStyleBackColor = true;
-            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 631);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 176;
-            // 
-            // cb_profile
-            // 
-            this.cb_profile.FormattingEnabled = true;
-            this.cb_profile.Items.AddRange(new object[] {
-            "Name",
-            "Title",
-            "Service",
-            "Email",
-            "Phone",
-            "Website"});
-            this.cb_profile.Location = new System.Drawing.Point(518, 627);
-            this.cb_profile.Name = "cb_profile";
-            this.cb_profile.Size = new System.Drawing.Size(121, 21);
-            this.cb_profile.TabIndex = 178;
-            // 
-            // cb_contact
-            // 
-            this.cb_contact.FormattingEnabled = true;
-            this.cb_contact.Items.AddRange(new object[] {
-            "Name",
-            "Title",
-            "Email",
-            "Phone"});
-            this.cb_contact.Location = new System.Drawing.Point(518, 627);
-            this.cb_contact.Name = "cb_contact";
-            this.cb_contact.Size = new System.Drawing.Size(121, 21);
-            this.cb_contact.TabIndex = 185;
-            this.cb_contact.Visible = false;
-            // 
-            // Btn__Contact_Search
-            // 
-            this.Btn__Contact_Search.Location = new System.Drawing.Point(645, 625);
-            this.Btn__Contact_Search.Name = "Btn__Contact_Search";
-            this.Btn__Contact_Search.Size = new System.Drawing.Size(75, 53);
-            this.Btn__Contact_Search.TabIndex = 183;
-            this.Btn__Contact_Search.Text = "Search";
-            this.Btn__Contact_Search.UseVisualStyleBackColor = true;
-            this.Btn__Contact_Search.Visible = false;
-            this.Btn__Contact_Search.Click += new System.EventHandler(this.Btn__Contact_Search_Click);
-            // 
-            // tb_contact
-            // 
-            this.tb_contact.Location = new System.Drawing.Point(469, 658);
-            this.tb_contact.Name = "tb_contact";
-            this.tb_contact.Size = new System.Drawing.Size(170, 20);
-            this.tb_contact.TabIndex = 182;
-            this.tb_contact.Visible = false;
-            // 
-            // Btn_Contact_Save
-            // 
-            this.Btn_Contact_Save.Location = new System.Drawing.Point(1001, 627);
-            this.Btn_Contact_Save.Name = "Btn_Contact_Save";
-            this.Btn_Contact_Save.Size = new System.Drawing.Size(75, 53);
-            this.Btn_Contact_Save.TabIndex = 181;
-            this.Btn_Contact_Save.Text = "Save";
-            this.Btn_Contact_Save.UseVisualStyleBackColor = true;
-            this.Btn_Contact_Save.Visible = false;
-            this.Btn_Contact_Save.Click += new System.EventHandler(this.Btn_Contact_Save_Click);
-            // 
-            // Btn_Contact_Open
-            // 
-            this.Btn_Contact_Open.Location = new System.Drawing.Point(147, 626);
-            this.Btn_Contact_Open.Name = "Btn_Contact_Open";
-            this.Btn_Contact_Open.Size = new System.Drawing.Size(128, 53);
-            this.Btn_Contact_Open.TabIndex = 180;
-            this.Btn_Contact_Open.Text = "Seamless Data Filter";
-            this.Btn_Contact_Open.UseVisualStyleBackColor = true;
-            this.Btn_Contact_Open.Click += new System.EventHandler(this.Btn_Contact_Open_Click);
-            // 
             // dataGridView_Contact
             // 
             this.dataGridView_Contact.AllowUserToAddRows = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridView_Contact.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridView_Contact.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView_Contact.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Contact.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Contact.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_Contact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Contact.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -385,27 +549,27 @@
             this.companyPhone3,
             this.contactPhone1,
             this.contactPhone2});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Contact.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dataGridView_Contact.Location = new System.Drawing.Point(12, 12);
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Contact.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridView_Contact.Location = new System.Drawing.Point(6, 6);
             this.dataGridView_Contact.Name = "dataGridView_Contact";
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Contact.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Contact.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView_Contact.RowHeadersVisible = false;
             this.dataGridView_Contact.RowHeadersWidth = 20;
             this.dataGridView_Contact.Size = new System.Drawing.Size(1231, 608);
-            this.dataGridView_Contact.TabIndex = 179;
+            this.dataGridView_Contact.TabIndex = 206;
             this.dataGridView_Contact.Visible = false;
             // 
             // dataGridViewTextBoxColumn1
@@ -558,219 +722,109 @@
             this.contactPhone2.HeaderText = "contactPhone2";
             this.contactPhone2.Name = "contactPhone2";
             // 
-            // label2
+            // tabControl1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(471, 632);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 186;
-            this.label2.Text = "Search";
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1252, 722);
+            this.tabControl1.TabIndex = 228;
             // 
-            // label3
+            // tabPage1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(729, 631);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 189;
-            this.label3.Text = "Dedupe";
+            this.tabPage1.Controls.Add(this.dataGridView_Contact);
+            this.tabPage1.Controls.Add(this.dataGridView_Profile);
+            this.tabPage1.Controls.Add(this.cb_contact_dedupe);
+            this.tabPage1.Controls.Add(this.tb_contact);
+            this.tabPage1.Controls.Add(this.cb_profile_dedupe);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.Btn_Search);
+            this.tabPage1.Controls.Add(this.tb_profile);
+            this.tabPage1.Controls.Add(this.cb_contact);
+            this.tabPage1.Controls.Add(this.Btn__Contact_Search);
+            this.tabPage1.Controls.Add(this.Btn_Open);
+            this.tabPage1.Controls.Add(this.cb_profile);
+            this.tabPage1.Controls.Add(this.Btn_Contact_Open);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.Btn_Contact_Save);
+            this.tabPage1.Controls.Add(this.btn_contact_dedupe);
+            this.tabPage1.Controls.Add(this.btn_exclude);
+            this.tabPage1.Controls.Add(this.cb_email);
+            this.tabPage1.Controls.Add(this.btn_profile_dedupe);
+            this.tabPage1.Controls.Add(this.btn_email);
+            this.tabPage1.Controls.Add(this.cb_phone);
+            this.tabPage1.Controls.Add(this.btn_merge);
+            this.tabPage1.Controls.Add(this.Btn_Save);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1244, 696);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // btn_contact_dedupe
+            // tabPage2
             // 
-            this.btn_contact_dedupe.Location = new System.Drawing.Point(916, 627);
-            this.btn_contact_dedupe.Name = "btn_contact_dedupe";
-            this.btn_contact_dedupe.Size = new System.Drawing.Size(75, 53);
-            this.btn_contact_dedupe.TabIndex = 191;
-            this.btn_contact_dedupe.Text = "Dedupe";
-            this.btn_contact_dedupe.UseVisualStyleBackColor = true;
-            this.btn_contact_dedupe.Visible = false;
-            this.btn_contact_dedupe.Click += new System.EventHandler(this.btn_contact_dedupe_Click);
-            // 
-            // btn_profile_dedupe
-            // 
-            this.btn_profile_dedupe.Location = new System.Drawing.Point(916, 627);
-            this.btn_profile_dedupe.Name = "btn_profile_dedupe";
-            this.btn_profile_dedupe.Size = new System.Drawing.Size(75, 53);
-            this.btn_profile_dedupe.TabIndex = 190;
-            this.btn_profile_dedupe.Text = "Dedupe";
-            this.btn_profile_dedupe.UseVisualStyleBackColor = true;
-            this.btn_profile_dedupe.Click += new System.EventHandler(this.btn_profile_dedupe_Click);
-            // 
-            // cb_profile_dedupe
-            // 
-            this.cb_profile_dedupe.FormattingEnabled = true;
-            this.cb_profile_dedupe.Items.AddRange(new object[] {
-            "Name",
-            "Title",
-            "Service",
-            "Email1",
-            "Email2",
-            "Email3",
-            "Phone1",
-            "Phone2",
-            "Phone3",
-            "Website"});
-            this.cb_profile_dedupe.Location = new System.Drawing.Point(790, 627);
-            this.cb_profile_dedupe.Name = "cb_profile_dedupe";
-            this.cb_profile_dedupe.Size = new System.Drawing.Size(120, 49);
-            this.cb_profile_dedupe.TabIndex = 192;
-            // 
-            // cb_contact_dedupe
-            // 
-            this.cb_contact_dedupe.FormattingEnabled = true;
-            this.cb_contact_dedupe.Items.AddRange(new object[] {
-            "List",
-            "Name",
-            "firstName",
-            "lastName",
-            "Title",
-            "LIProfileUrl",
-            "CompanyLIProfileUrl",
-            "Company",
-            "CompanyIndustry",
-            "Website",
-            "CompanyLocation",
-            "companyStreet1",
-            "ContactLocation",
-            "Phone",
-            "Email",
-            "email1",
-            "email2",
-            "PersonalEmail",
-            "companyPhone1",
-            "companyPhone2",
-            "companyPhone3",
-            "contactPhone1",
-            "contactPhone2"});
-            this.cb_contact_dedupe.Location = new System.Drawing.Point(790, 627);
-            this.cb_contact_dedupe.Name = "cb_contact_dedupe";
-            this.cb_contact_dedupe.Size = new System.Drawing.Size(120, 49);
-            this.cb_contact_dedupe.TabIndex = 193;
-            this.cb_contact_dedupe.Visible = false;
-            // 
-            // btn_email
-            // 
-            this.btn_email.Location = new System.Drawing.Point(1084, 627);
-            this.btn_email.Name = "btn_email";
-            this.btn_email.Size = new System.Drawing.Size(75, 53);
-            this.btn_email.TabIndex = 194;
-            this.btn_email.Text = "Email";
-            this.btn_email.UseVisualStyleBackColor = true;
-            this.btn_email.Click += new System.EventHandler(this.btn_email_Click);
-            // 
-            // btn_merge
-            // 
-            this.btn_merge.Location = new System.Drawing.Point(1168, 626);
-            this.btn_merge.Name = "btn_merge";
-            this.btn_merge.Size = new System.Drawing.Size(75, 53);
-            this.btn_merge.TabIndex = 195;
-            this.btn_merge.Text = "Merge";
-            this.btn_merge.UseVisualStyleBackColor = true;
-            this.btn_merge.Click += new System.EventHandler(this.btn_merge_Click);
-            // 
-            // cb_email
-            // 
-            this.cb_email.AutoSize = true;
-            this.cb_email.Location = new System.Drawing.Point(285, 632);
-            this.cb_email.Name = "cb_email";
-            this.cb_email.Size = new System.Drawing.Size(66, 17);
-            this.cb_email.TabIndex = 196;
-            this.cb_email.Text = "no Email";
-            this.cb_email.UseVisualStyleBackColor = true;
-            // 
-            // cb_phone
-            // 
-            this.cb_phone.AutoSize = true;
-            this.cb_phone.Location = new System.Drawing.Point(285, 655);
-            this.cb_phone.Name = "cb_phone";
-            this.cb_phone.Size = new System.Drawing.Size(71, 17);
-            this.cb_phone.TabIndex = 197;
-            this.cb_phone.Text = "no phone";
-            this.cb_phone.UseVisualStyleBackColor = true;
-            // 
-            // btn_exclude
-            // 
-            this.btn_exclude.Location = new System.Drawing.Point(357, 626);
-            this.btn_exclude.Name = "btn_exclude";
-            this.btn_exclude.Size = new System.Drawing.Size(75, 53);
-            this.btn_exclude.TabIndex = 198;
-            this.btn_exclude.Text = "Exclude";
-            this.btn_exclude.UseVisualStyleBackColor = true;
-            this.btn_exclude.Click += new System.EventHandler(this.btn_exclude_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.emailToolStripMenuItem,
-            this.phoneToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
-            // 
-            // emailToolStripMenuItem
-            // 
-            this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
-            this.emailToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.emailToolStripMenuItem.Text = "Email";
-            this.emailToolStripMenuItem.Click += new System.EventHandler(this.emailToolStripMenuItem_Click);
-            // 
-            // phoneToolStripMenuItem
-            // 
-            this.phoneToolStripMenuItem.Name = "phoneToolStripMenuItem";
-            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.phoneToolStripMenuItem.Text = "Phone";
-            this.phoneToolStripMenuItem.Click += new System.EventHandler(this.phoneToolStripMenuItem_Click);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1286, 663);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 692);
-            this.Controls.Add(this.btn_exclude);
-            this.Controls.Add(this.cb_phone);
-            this.Controls.Add(this.cb_email);
-            this.Controls.Add(this.btn_merge);
-            this.Controls.Add(this.btn_email);
-            this.Controls.Add(this.cb_contact_dedupe);
-            this.Controls.Add(this.cb_profile_dedupe);
-            this.Controls.Add(this.btn_contact_dedupe);
-            this.Controls.Add(this.btn_profile_dedupe);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cb_contact);
-            this.Controls.Add(this.Btn__Contact_Search);
-            this.Controls.Add(this.tb_contact);
-            this.Controls.Add(this.Btn_Contact_Save);
-            this.Controls.Add(this.Btn_Contact_Open);
-            this.Controls.Add(this.dataGridView_Contact);
-            this.Controls.Add(this.cb_profile);
+            this.ClientSize = new System.Drawing.Size(1268, 744);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Btn_Search);
-            this.Controls.Add(this.tb_profile);
-            this.Controls.Add(this.Btn_Save);
-            this.Controls.Add(this.Btn_Open);
-            this.Controls.Add(this.dataGridView_Profile);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Data Manager";
             this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Profile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Contact)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView_Profile;
-        private System.Windows.Forms.Button Btn_Open;
-        private System.Windows.Forms.Button Btn_Save;
-        private System.Windows.Forms.TextBox tb_profile;
-        private System.Windows.Forms.Button Btn_Search;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_exclude;
+        private System.Windows.Forms.CheckBox cb_phone;
+        private System.Windows.Forms.CheckBox cb_email;
+        private System.Windows.Forms.Button btn_merge;
+        private System.Windows.Forms.CheckedListBox cb_contact_dedupe;
+        private System.Windows.Forms.CheckedListBox cb_profile_dedupe;
+        private System.Windows.Forms.Button btn_profile_dedupe;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem emailToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem phoneToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cb_contact;
+        private System.Windows.Forms.TextBox tb_contact;
+        private System.Windows.Forms.Button Btn_Contact_Open;
         private System.Windows.Forms.ComboBox cb_profile;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Btn_Save;
+        private System.Windows.Forms.Button Btn_Open;
+        private System.Windows.Forms.TextBox tb_profile;
+        private System.Windows.Forms.Button Btn__Contact_Search;
+        private System.Windows.Forms.Button Btn_Search;
+        private System.Windows.Forms.Button btn_contact_dedupe;
+        private System.Windows.Forms.Button Btn_Contact_Save;
+        private System.Windows.Forms.Button btn_email;
+        private System.Windows.Forms.DataGridView dataGridView_Profile;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
@@ -782,22 +836,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Website;
-        private System.Windows.Forms.ComboBox cb_contact;
-        private System.Windows.Forms.Button Btn__Contact_Search;
-        private System.Windows.Forms.TextBox tb_contact;
-        private System.Windows.Forms.Button Btn_Contact_Save;
-        private System.Windows.Forms.Button Btn_Contact_Open;
         private System.Windows.Forms.DataGridView dataGridView_Contact;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_contact_dedupe;
-        private System.Windows.Forms.Button btn_profile_dedupe;
-        private System.Windows.Forms.CheckedListBox cb_profile_dedupe;
-        private System.Windows.Forms.CheckedListBox cb_contact_dedupe;
-        private System.Windows.Forms.Button btn_email;
-        private System.Windows.Forms.Button btn_merge;
-        private System.Windows.Forms.CheckBox cb_email;
-        private System.Windows.Forms.CheckBox cb_phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn List;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -822,10 +861,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn companyPhone3;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactPhone1;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactPhone2;
-        private System.Windows.Forms.Button btn_exclude;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem emailToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem phoneToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 
