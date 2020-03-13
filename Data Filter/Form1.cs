@@ -222,6 +222,15 @@ namespace Data_Filter
             cb_contact_dedupe.Visible = true;
             btn_contact_dedupe.Visible = true;
 
+            dataGridView_Contact.Columns[16].Visible = true;
+            dataGridView_Contact.Columns[17].Visible = true;
+
+            dataGridView_Contact.Columns[19].Visible = true;
+            dataGridView_Contact.Columns[20].Visible = true;
+            dataGridView_Contact.Columns[21].Visible = true;
+            dataGridView_Contact.Columns[22].Visible = true;
+            dataGridView_Contact.Columns[23].Visible = true;
+
             OpenFileDialog theDialog = new OpenFileDialog();
             theDialog.Title = "Open csv File";
             theDialog.Filter = "csv files|*.csv";
@@ -232,7 +241,7 @@ namespace Data_Filter
                 string path = Path.GetFullPath(theDialog.FileName);
                 Settings.Default["OpenURL"] = Path.GetDirectoryName(theDialog.FileName);
                 Settings.Default.Save();
-                ContactList = new CCsv().ReadCsvContact(path, cb_phone.Checked, cb_email.Checked);
+                ContactList = new CCsv().ReadCsvContact(path);
                 ContactProcess = new Thread(() => LoadContact(""));
                 ContactProcess.Start();
             }
@@ -564,6 +573,61 @@ namespace Data_Filter
 
         private void btn_merge_Click(object sender, EventArgs e)
         {
+            contextMenuStrip1.Show(btn_merge, 75, 53);
+        }
+
+        private void btn_exclude_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            List<ContactInfo> obj = (from m in ContactList.Where(delegate (CContact m)
+            {
+                if (((cb_email.Checked && m.Email != "") || !cb_email.Checked) && ((cb_phone.Checked && m.Phone != "") || !cb_phone.Checked))
+                {
+                    count++;
+                    return true;
+                }
+                return false;
+            })
+                                     select new ContactInfo()
+                                     {
+                                         No = count.ToString(),
+                                         List = m.List,
+                                         Name = m.Name,
+                                         firstName = m.firstName,
+                                         lastName = m.lastName,
+                                         Title = m.Title,
+                                         LIProfileUrl = m.LIProfileUrl,
+                                         CompanyLIProfileUrl = m.CompanyLIProfileUrl,
+                                         Company = m.Company,
+                                         CompanyIndustry = m.CompanyIndustry,
+                                         Website = m.Website,
+                                         CompanyLocation = m.CompanyLocation,
+                                         companyStreet1 = m.companyStreet1,
+                                         ContactLocation = m.ContactLocation,
+                                         Phone = m.Phone,
+                                         Email = m.Email,
+                                         email1 = m.email1,
+                                         email2 = m.email2,
+                                         PersonalEmail = m.PersonalEmail,
+                                         companyPhone1 = m.companyPhone1,
+                                         companyPhone2 = m.companyPhone2,
+                                         companyPhone3 = m.companyPhone3,
+                                         contactPhone1 = m.contactPhone1,
+                                         contactPhone2 = m.contactPhone2,
+                                     }).ToList();
+
+            CheckForIllegalCrossThreadCalls = false;
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.Text = "Data Manager  Loading csv file";
+                dataGridView_Contact.AutoGenerateColumns = false;
+                dataGridView_Contact.DataSource = obj;
+                this.Text = "Data Manager 1.04";
+            });
+        }
+
+        private void emailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             DialogResult dialogResult = MessageBox.Show("Are you sure to merge?", "Merge Email", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.No)
             {
@@ -635,6 +699,74 @@ namespace Data_Filter
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
                 this.Text = "Data Manager 1.04";
+
+                dataGridView_Contact.Columns[16].Visible = false;
+                dataGridView_Contact.Columns[17].Visible = false;
+            });
+        }
+
+        private void phoneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure to merge?", "Merge Phone", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+            int count = 0;
+
+            List<ContactInfo> obj = (from m in ContactList.Where(delegate (CContact m)
+            {
+
+                if (m.Phone == "Researching...")
+                {
+                    m.Phone = "";
+                }
+
+                count++;
+                return true;
+            })
+                                     select new ContactInfo()
+                                     {
+                                         No = count.ToString(),
+                                         List = m.List,
+                                         Name = m.Name,
+                                         firstName = m.firstName,
+                                         lastName = m.lastName,
+                                         Title = m.Title,
+                                         LIProfileUrl = m.LIProfileUrl,
+                                         CompanyLIProfileUrl = m.CompanyLIProfileUrl,
+                                         Company = m.Company,
+                                         CompanyIndustry = m.CompanyIndustry,
+                                         Website = m.Website,
+                                         CompanyLocation = m.CompanyLocation,
+                                         companyStreet1 = m.companyStreet1,
+                                         ContactLocation = m.ContactLocation,
+                                         Phone = m.Phone,
+                                         Email = m.Email,
+                                         email1 = m.email1,
+                                         email2 = m.email2,
+                                         PersonalEmail = m.PersonalEmail,
+                                         companyPhone1 = m.companyPhone1,
+                                         companyPhone2 = m.companyPhone2,
+                                         companyPhone3 = m.companyPhone3,
+                                         contactPhone1 = m.contactPhone1,
+                                         contactPhone2 = m.contactPhone2,
+                                     }).ToList();
+
+            CheckForIllegalCrossThreadCalls = false;
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.Text = "Data Manager  Loading csv file";
+                dataGridView_Contact.AutoGenerateColumns = false;
+                dataGridView_Contact.DataSource = obj;
+                this.Text = "Data Manager 1.04";
+
+                dataGridView_Contact.Columns[19].Visible = false;
+                dataGridView_Contact.Columns[20].Visible = false;
+                dataGridView_Contact.Columns[21].Visible = false;
+                dataGridView_Contact.Columns[22].Visible = false;
+                dataGridView_Contact.Columns[23].Visible = false;
             });
         }
     }

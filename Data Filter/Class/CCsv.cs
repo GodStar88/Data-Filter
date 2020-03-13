@@ -127,91 +127,87 @@ namespace Data_Filter
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public List<CContact> ReadCsvContact(string path, bool phone, bool email)
+        public List<CContact> ReadCsvContact(string path)
         {
             List<CContact> list = new List<CContact>();
             using (var textReader = File.OpenText(path))
             {
                 var csv = new CsvReader(textReader);
+                csv.Read();
+                var header = csv.Context.Record;
+
+                int nList = 1, nName = 2, nfirstName = 3, nlastName = 4, nTitle = 5, nLIProfileUrl = 6, nCompanyLIProfileUrl = 7,
+                    nCompany = 8, nCompanyIndustry = 9, nWebsite = 10, nCompanyLocation = 11, ncompanyStreet1 = 12, nContactLocation = 13,
+                    nPhone = 14, nEmail = 15, nemail1 = 16, nemail2 = 17, nPersonalEmail = 18, ncompanyPhone1 = 19, ncompanyPhone2 = 20,
+                    ncompanyPhone3 = 21, ncontactPhone1 = 22, ncontactPhone2 = 23;
+
+                for (int i = 0; i < header.Length; i++)
+                {
+                    switch (header[i].ToLower())
+                    {
+                        case "list": nList = i; break;
+                        case "name": nName = i; break;
+                        case "firstname": nfirstName = i; break;
+                        case "lastname": nlastName = i; break;
+                        case "title": nTitle = i; break;
+                        case "liprofileurl": nLIProfileUrl = i; break;
+                        case "companyliprofileurl": nCompanyLIProfileUrl = i; break;
+                        case "company": nCompany = i; break;
+                        case "companyindustry": nCompanyIndustry = i; break;
+                        case "website": nWebsite = i; break;
+                        case "companylocation": nCompanyLocation = i; break;
+                        case "companystreet1": ncompanyStreet1 = i; break;
+                        case "contactlocation": nContactLocation = i; break;
+                        case "phone": nPhone = i; break;
+                        case "email": nEmail = i; break;
+                        case "email1": nemail1 = i; break;
+                        case "email2": nemail2 = i; break;
+                        case "personalemail": nPersonalEmail = i; break;
+                        case "companyphone1": ncompanyPhone1 = i; break;
+                        case "companyphone2": ncompanyPhone2 = i; break;
+                        case "companyphone3": ncompanyPhone3 = i; break;
+                        case "contactphone1": ncontactPhone1 = i; break;
+                        case "contactphone2": ncontactPhone2 = i; break;
+                    }
+                }
+
                 while (csv.Read())
                 {
-                    do
+                    try
                     {
-                        try
+                        var record = csv.Context.Record;
+                        var profile = new CContact();
+                        profile.List = record[nList];
+                        profile.Name = record[nName];
+                        profile.firstName = record[nfirstName];
+                        profile.lastName = record[nlastName];
+                        profile.Title = record[nTitle];
+                        profile.LIProfileUrl = record[nLIProfileUrl];
+                        profile.CompanyLIProfileUrl = record[nCompanyLIProfileUrl];
+                        profile.Company = record[nCompany];
+                        profile.CompanyIndustry = record[nCompanyIndustry];
+                        profile.Website = record[nWebsite];
+                        profile.CompanyLocation = record[nCompanyLocation];
+                        profile.companyStreet1 = record[ncompanyStreet1];
+                        profile.ContactLocation = record[nContactLocation];
+                        profile.Phone = record[nPhone];
+                        profile.Email = record[nEmail];
+                        profile.email1 = record[nemail1];
+                        profile.email2 = record[nemail2];
+                        profile.PersonalEmail = record[nPersonalEmail];
+                        profile.companyPhone1 = record[ncompanyPhone1];
+                        profile.companyPhone2 = record[ncompanyPhone2];
+                        profile.companyPhone3 = record[ncompanyPhone3];
+                        profile.contactPhone1 = record[ncontactPhone1];
+                        profile.contactPhone2 = record[ncontactPhone1];
+                        if (profile.List != "List")
                         {
-                            var record = csv.Context.Record;
-                            var profile = new CContact();
-                            profile.List = record[1];
-                            profile.Name = record[2];
-                            profile.firstName = record[3];
-                            profile.lastName = record[5];
-                            profile.Title = record[6];
-                            profile.LIProfileUrl = record[7];
-                            profile.CompanyLIProfileUrl = record[8];
-                            profile.Company = record[10];
-                            profile.CompanyIndustry = record[11];
-                            profile.Website = record[15];
-                            profile.CompanyLocation = record[16];
-                            profile.companyStreet1 = record[17];
-                            profile.ContactLocation = record[26];
-                            profile.Phone = record[36];
-                            profile.Email = record[37];
-                            profile.email1 = record[38];
-                            profile.email2 = record[41];
-                            profile.PersonalEmail = record[44];
-                            profile.companyPhone1 = record[51];
-                            profile.companyPhone2 = record[53];
-                            profile.companyPhone3 = record[55];
-                            profile.contactPhone1 = record[57];
-                            profile.contactPhone2 = record[59];
-                            if (profile.List != "List" && ((profile.Phone != "" && phone) || !phone) && ((profile.Email != "" && email) || !email))
-                            {
-                                list.Add(profile);
-                            }
-                            break;
+                            list.Add(profile);
                         }
-                        catch (Exception)
-                        {
-                        }
-
-                        try
-                        {
-                            var record = csv.Context.Record;
-                            var profile = new CContact();
-                            profile.List = record[0];
-                            profile.Name = record[1];
-                            profile.firstName = record[2];
-                            profile.lastName = record[3];
-                            profile.Title = record[4];
-                            profile.LIProfileUrl = record[5];
-                            profile.CompanyLIProfileUrl = record[6];
-                            profile.Company = record[7];
-                            profile.CompanyIndustry = record[8];
-                            profile.Website = record[9];
-                            profile.CompanyLocation = record[10];
-                            profile.companyStreet1 = record[11];
-                            profile.ContactLocation = record[12];
-                            profile.Phone = record[13];
-                            profile.Email = record[14];
-                            profile.email1 = record[15];
-                            profile.email2 = record[16];
-                            profile.PersonalEmail = record[17];
-                            profile.companyPhone1 = record[18];
-                            profile.companyPhone2 = record[19];
-                            profile.companyPhone3 = record[20];
-                            profile.contactPhone1 = record[21];
-                            profile.contactPhone2 = record[22];
-                            if (profile.List != "List")
-                            {
-                                list.Add(profile);
-                            }
-                            break;
-                        }
-                        catch (Exception)
-                        {
-                        }
-                    } while (false);
-
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
                 textReader.Close();
             }
