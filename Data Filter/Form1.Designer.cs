@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.btn_exclude = new System.Windows.Forms.Button();
             this.cb_phone = new System.Windows.Forms.CheckBox();
@@ -103,16 +103,22 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.uC_Append1 = new Data_Filter.UC_Append();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem_search = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_subtract = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Profile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Contact)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_exclude
             // 
-            this.btn_exclude.Location = new System.Drawing.Point(361, 632);
+            this.btn_exclude.Location = new System.Drawing.Point(361, 582);
             this.btn_exclude.Name = "btn_exclude";
             this.btn_exclude.Size = new System.Drawing.Size(75, 53);
             this.btn_exclude.TabIndex = 222;
@@ -124,7 +130,7 @@
             // 
             this.cb_phone.AutoSize = true;
             this.cb_phone.BackColor = System.Drawing.Color.White;
-            this.cb_phone.Location = new System.Drawing.Point(290, 662);
+            this.cb_phone.Location = new System.Drawing.Point(290, 612);
             this.cb_phone.Name = "cb_phone";
             this.cb_phone.Size = new System.Drawing.Size(71, 17);
             this.cb_phone.TabIndex = 221;
@@ -135,7 +141,7 @@
             // 
             this.cb_email.AutoSize = true;
             this.cb_email.BackColor = System.Drawing.Color.White;
-            this.cb_email.Location = new System.Drawing.Point(290, 638);
+            this.cb_email.Location = new System.Drawing.Point(290, 588);
             this.cb_email.Name = "cb_email";
             this.cb_email.Size = new System.Drawing.Size(66, 17);
             this.cb_email.TabIndex = 220;
@@ -144,7 +150,7 @@
             // 
             // btn_merge
             // 
-            this.btn_merge.Location = new System.Drawing.Point(1162, 632);
+            this.btn_merge.Location = new System.Drawing.Point(1162, 582);
             this.btn_merge.Name = "btn_merge";
             this.btn_merge.Size = new System.Drawing.Size(75, 53);
             this.btn_merge.TabIndex = 219;
@@ -179,7 +185,7 @@
             "companyPhone3",
             "contactPhone1",
             "contactPhone2"});
-            this.cb_contact_dedupe.Location = new System.Drawing.Point(792, 634);
+            this.cb_contact_dedupe.Location = new System.Drawing.Point(792, 584);
             this.cb_contact_dedupe.Name = "cb_contact_dedupe";
             this.cb_contact_dedupe.Size = new System.Drawing.Size(120, 49);
             this.cb_contact_dedupe.TabIndex = 217;
@@ -199,14 +205,14 @@
             "Phone2",
             "Phone3",
             "Website"});
-            this.cb_profile_dedupe.Location = new System.Drawing.Point(792, 634);
+            this.cb_profile_dedupe.Location = new System.Drawing.Point(792, 584);
             this.cb_profile_dedupe.Name = "cb_profile_dedupe";
             this.cb_profile_dedupe.Size = new System.Drawing.Size(120, 49);
             this.cb_profile_dedupe.TabIndex = 216;
             // 
             // btn_profile_dedupe
             // 
-            this.btn_profile_dedupe.Location = new System.Drawing.Point(919, 632);
+            this.btn_profile_dedupe.Location = new System.Drawing.Point(919, 582);
             this.btn_profile_dedupe.Name = "btn_profile_dedupe";
             this.btn_profile_dedupe.Size = new System.Drawing.Size(75, 53);
             this.btn_profile_dedupe.TabIndex = 214;
@@ -218,7 +224,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(742, 636);
+            this.label3.Location = new System.Drawing.Point(742, 586);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 213;
@@ -227,7 +233,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(475, 640);
+            this.label2.Location = new System.Drawing.Point(475, 590);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 212;
@@ -246,12 +252,14 @@
             this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
             this.emailToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.emailToolStripMenuItem.Text = "Email";
+            this.emailToolStripMenuItem.Click += new System.EventHandler(this.emailToolStripMenuItem_Click);
             // 
             // phoneToolStripMenuItem
             // 
             this.phoneToolStripMenuItem.Name = "phoneToolStripMenuItem";
             this.phoneToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.phoneToolStripMenuItem.Text = "Phone";
+            this.phoneToolStripMenuItem.Click += new System.EventHandler(this.phoneToolStripMenuItem_Click);
             // 
             // cb_contact
             // 
@@ -261,7 +269,7 @@
             "Title",
             "Email",
             "Phone"});
-            this.cb_contact.Location = new System.Drawing.Point(522, 636);
+            this.cb_contact.Location = new System.Drawing.Point(522, 586);
             this.cb_contact.Name = "cb_contact";
             this.cb_contact.Size = new System.Drawing.Size(121, 21);
             this.cb_contact.TabIndex = 211;
@@ -269,7 +277,7 @@
             // 
             // tb_contact
             // 
-            this.tb_contact.Location = new System.Drawing.Point(473, 662);
+            this.tb_contact.Location = new System.Drawing.Point(473, 612);
             this.tb_contact.Name = "tb_contact";
             this.tb_contact.Size = new System.Drawing.Size(170, 20);
             this.tb_contact.TabIndex = 209;
@@ -277,7 +285,7 @@
             // 
             // Btn_Contact_Open
             // 
-            this.Btn_Contact_Open.Location = new System.Drawing.Point(140, 632);
+            this.Btn_Contact_Open.Location = new System.Drawing.Point(140, 582);
             this.Btn_Contact_Open.Name = "Btn_Contact_Open";
             this.Btn_Contact_Open.Size = new System.Drawing.Size(128, 53);
             this.Btn_Contact_Open.TabIndex = 207;
@@ -295,7 +303,7 @@
             "Email",
             "Phone",
             "Website"});
-            this.cb_profile.Location = new System.Drawing.Point(522, 636);
+            this.cb_profile.Location = new System.Drawing.Point(522, 586);
             this.cb_profile.Name = "cb_profile";
             this.cb_profile.Size = new System.Drawing.Size(121, 21);
             this.cb_profile.TabIndex = 205;
@@ -310,7 +318,7 @@
             // 
             // Btn_Save
             // 
-            this.Btn_Save.Location = new System.Drawing.Point(1000, 632);
+            this.Btn_Save.Location = new System.Drawing.Point(1000, 582);
             this.Btn_Save.Name = "Btn_Save";
             this.Btn_Save.Size = new System.Drawing.Size(75, 53);
             this.Btn_Save.TabIndex = 201;
@@ -320,7 +328,7 @@
             // 
             // Btn_Open
             // 
-            this.Btn_Open.Location = new System.Drawing.Point(6, 632);
+            this.Btn_Open.Location = new System.Drawing.Point(6, 582);
             this.Btn_Open.Name = "Btn_Open";
             this.Btn_Open.Size = new System.Drawing.Size(128, 53);
             this.Btn_Open.TabIndex = 200;
@@ -330,73 +338,78 @@
             // 
             // tb_profile
             // 
-            this.tb_profile.Location = new System.Drawing.Point(473, 662);
+            this.tb_profile.Location = new System.Drawing.Point(473, 612);
             this.tb_profile.Name = "tb_profile";
             this.tb_profile.Size = new System.Drawing.Size(170, 20);
             this.tb_profile.TabIndex = 202;
             // 
             // Btn__Contact_Search
             // 
-            this.Btn__Contact_Search.Location = new System.Drawing.Point(649, 632);
+            this.Btn__Contact_Search.Location = new System.Drawing.Point(649, 582);
             this.Btn__Contact_Search.Name = "Btn__Contact_Search";
             this.Btn__Contact_Search.Size = new System.Drawing.Size(75, 53);
             this.Btn__Contact_Search.TabIndex = 225;
             this.Btn__Contact_Search.Text = "Search";
             this.Btn__Contact_Search.UseVisualStyleBackColor = true;
             this.Btn__Contact_Search.Visible = false;
+            this.Btn__Contact_Search.Click += new System.EventHandler(this.Btn__Contact_Search_Click);
             // 
             // Btn_Search
             // 
-            this.Btn_Search.Location = new System.Drawing.Point(649, 632);
+            this.Btn_Search.Location = new System.Drawing.Point(649, 582);
             this.Btn_Search.Name = "Btn_Search";
             this.Btn_Search.Size = new System.Drawing.Size(75, 53);
             this.Btn_Search.TabIndex = 223;
             this.Btn_Search.Text = "Search";
             this.Btn_Search.UseVisualStyleBackColor = true;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
             // 
             // btn_contact_dedupe
             // 
-            this.btn_contact_dedupe.Location = new System.Drawing.Point(919, 632);
+            this.btn_contact_dedupe.Location = new System.Drawing.Point(919, 582);
             this.btn_contact_dedupe.Name = "btn_contact_dedupe";
             this.btn_contact_dedupe.Size = new System.Drawing.Size(75, 53);
             this.btn_contact_dedupe.TabIndex = 226;
             this.btn_contact_dedupe.Text = "Dedupe";
             this.btn_contact_dedupe.UseVisualStyleBackColor = true;
             this.btn_contact_dedupe.Visible = false;
+            this.btn_contact_dedupe.Click += new System.EventHandler(this.btn_contact_dedupe_Click);
             // 
             // Btn_Contact_Save
             // 
-            this.Btn_Contact_Save.Location = new System.Drawing.Point(1000, 632);
+            this.Btn_Contact_Save.Location = new System.Drawing.Point(1000, 582);
             this.Btn_Contact_Save.Name = "Btn_Contact_Save";
             this.Btn_Contact_Save.Size = new System.Drawing.Size(75, 53);
             this.Btn_Contact_Save.TabIndex = 224;
             this.Btn_Contact_Save.Text = "Save";
             this.Btn_Contact_Save.UseVisualStyleBackColor = true;
             this.Btn_Contact_Save.Visible = false;
+            this.Btn_Contact_Save.Click += new System.EventHandler(this.Btn_Contact_Save_Click);
             // 
             // btn_email
             // 
-            this.btn_email.Location = new System.Drawing.Point(1081, 632);
+            this.btn_email.Location = new System.Drawing.Point(1081, 582);
             this.btn_email.Name = "btn_email";
             this.btn_email.Size = new System.Drawing.Size(75, 53);
             this.btn_email.TabIndex = 227;
             this.btn_email.Text = "Email";
             this.btn_email.UseVisualStyleBackColor = true;
+            this.btn_email.Click += new System.EventHandler(this.btn_email_Click);
             // 
             // dataGridView_Profile
             // 
             this.dataGridView_Profile.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridView_Profile.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridView_Profile.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridView_Profile.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Profile.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Profile.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridView_Profile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Profile.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.No,
@@ -410,26 +423,26 @@
             this.Phone2,
             this.Phone3,
             this.Website});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Profile.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Profile.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridView_Profile.Location = new System.Drawing.Point(6, 6);
             this.dataGridView_Profile.Name = "dataGridView_Profile";
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Profile.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Profile.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridView_Profile.RowHeadersVisible = false;
             this.dataGridView_Profile.RowHeadersWidth = 20;
-            this.dataGridView_Profile.Size = new System.Drawing.Size(1231, 608);
+            this.dataGridView_Profile.Size = new System.Drawing.Size(1231, 565);
             this.dataGridView_Profile.TabIndex = 199;
             // 
             // No
@@ -512,17 +525,17 @@
             // dataGridView_Contact
             // 
             this.dataGridView_Contact.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridView_Contact.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridView_Contact.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridView_Contact.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Contact.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Contact.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridView_Contact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Contact.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -549,26 +562,26 @@
             this.companyPhone3,
             this.contactPhone1,
             this.contactPhone2});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Contact.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Contact.DefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridView_Contact.Location = new System.Drawing.Point(6, 6);
             this.dataGridView_Contact.Name = "dataGridView_Contact";
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Contact.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Contact.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridView_Contact.RowHeadersVisible = false;
             this.dataGridView_Contact.RowHeadersWidth = 20;
-            this.dataGridView_Contact.Size = new System.Drawing.Size(1231, 608);
+            this.dataGridView_Contact.Size = new System.Drawing.Size(1231, 565);
             this.dataGridView_Contact.TabIndex = 206;
             this.dataGridView_Contact.Visible = false;
             // 
@@ -726,10 +739,11 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1252, 722);
+            this.tabControl1.Size = new System.Drawing.Size(1254, 670);
             this.tabControl1.TabIndex = 228;
             // 
             // tabPage1
@@ -760,26 +774,58 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1244, 696);
+            this.tabPage1.Size = new System.Drawing.Size(1246, 644);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Filter";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.uC_Append1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1286, 663);
+            this.tabPage2.Size = new System.Drawing.Size(1246, 644);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Append";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // uC_Append1
+            // 
+            this.uC_Append1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_Append1.Location = new System.Drawing.Point(3, 3);
+            this.uC_Append1.Margin = new System.Windows.Forms.Padding(0);
+            this.uC_Append1.Name = "uC_Append1";
+            this.uC_Append1.Size = new System.Drawing.Size(1240, 638);
+            this.uC_Append1.TabIndex = 0;
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_search,
+            this.toolStripMenuItem_subtract});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(181, 70);
+            // 
+            // toolStripMenuItem_search
+            // 
+            this.toolStripMenuItem_search.Name = "toolStripMenuItem_search";
+            this.toolStripMenuItem_search.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem_search.Text = "Search";
+            this.toolStripMenuItem_search.Click += new System.EventHandler(this.toolStripMenuItem_search_Click);
+            // 
+            // toolStripMenuItem_subtract
+            // 
+            this.toolStripMenuItem_subtract.Name = "toolStripMenuItem_subtract";
+            this.toolStripMenuItem_subtract.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem_subtract.Text = "Subtract";
+            this.toolStripMenuItem_subtract.Click += new System.EventHandler(this.toolStripMenuItem_subtract_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 744);
+            this.ClientSize = new System.Drawing.Size(1254, 670);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -793,6 +839,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -864,6 +912,10 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private UC_Append uC_Append1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_search;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_subtract;
     }
 }
 

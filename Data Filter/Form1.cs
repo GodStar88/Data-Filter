@@ -149,7 +149,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Profile.AutoGenerateColumns = false;
                 dataGridView_Profile.DataSource = obj;
-                this.Text = "Data Manager 1.04";
+                this.Text = "Data Manager 1.05";
             });
         }
 
@@ -192,8 +192,20 @@ namespace Data_Filter
 
         private void Btn__Contact_Search_Click(object sender, EventArgs e)
         {
+            contextMenuStrip2.Show(Btn__Contact_Search, 75, 53);
+        }
+
+        private void toolStripMenuItem_search_Click(object sender, EventArgs e)
+        {
             try { ContactProcess.Abort(); } catch (Exception) { };
             ContactProcess = new Thread(() => LoadContact(tb_contact.Text));
+            ContactProcess.Start();
+        }
+
+        private void toolStripMenuItem_subtract_Click(object sender, EventArgs e)
+        {
+            try { ContactProcess.Abort(); } catch (Exception) { };
+            ContactProcess = new Thread(() => SubtractContact(tb_contact.Text));
             ContactProcess.Start();
         }
 
@@ -251,7 +263,7 @@ namespace Data_Filter
         {
             SaveFileDialog savefile = new SaveFileDialog();
             string date = DateTime.Now.ToString("yyyy-MM-dd");
-            savefile.FileName = date + "- profile.csv";
+            savefile.FileName = date + "- contact.csv";
             savefile.Filter = "csv files|*.csv";
             string path = "";
             if (savefile.ShowDialog() == DialogResult.OK)
@@ -367,13 +379,88 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
-                this.Text = "Data Manager 1.04";
+                this.Text = "Data Manager 1.05";
+            });
+        }
+
+        private void SubtractContact(string str)
+        {
+            int count = 0;
+            object obj = (from m in ContactList.Where(delegate (CContact m)
+            {
+                switch (cb_contact.Text)
+                {
+                    case "Name":
+                        if (m.Name.ToLower().Contains(str.ToLower()))
+                        {
+                            return false;
+                        }
+                        break;
+                    case "Title":
+                        if (m.Title.ToLower().Contains(str.ToLower()))
+                        {
+                            return false;
+                        }
+                        break;
+                    case "Email":
+                        if (m.Email.ToLower().Contains(str.ToLower()) || m.email1.ToLower().Contains(str.ToLower()) || m.email2.ToLower().Contains(str.ToLower()) || m.PersonalEmail.ToLower().Contains(str.ToLower()))
+                        {
+                            return false;
+                        }
+                        break;
+                    case "Phone":
+                        if (m.companyPhone1.ToLower().Contains(str.ToLower()) || m.companyPhone2.ToLower().Contains(str.ToLower()) || m.companyPhone3.ToLower().Contains(str.ToLower()) || m.contactPhone1.ToLower().Contains(str.ToLower()) || m.contactPhone2.ToLower().Contains(str.ToLower()))
+                        {
+                            return false;
+                        }
+                        break;
+                }
+                count++;
+                return true;
+            })
+                          select new
+                          {
+                              No = count.ToString(),
+                              List = m.List,
+                              Name = m.Name,
+                              firstName = m.firstName,
+                              lastName = m.lastName,
+                              Title = m.Title,
+                              LIProfileUrl = m.LIProfileUrl,
+                              CompanyLIProfileUrl = m.CompanyLIProfileUrl,
+                              Company = m.Company,
+                              CompanyIndustry = m.CompanyIndustry,
+                              Website = m.Website,
+                              CompanyLocation = m.CompanyLocation,
+                              companyStreet1 = m.companyStreet1,
+                              ContactLocation = m.ContactLocation,
+                              Phone = m.Phone,
+                              Email = m.Email,
+                              email1 = m.email1,
+                              email2 = m.email2,
+                              PersonalEmail = m.PersonalEmail,
+                              companyPhone1 = m.companyPhone1,
+                              companyPhone2 = m.companyPhone2,
+                              companyPhone3 = m.companyPhone3,
+                              contactPhone1 = m.contactPhone1,
+                              contactPhone2 = m.contactPhone2,
+                          }).ToList();
+
+
+
+            CheckForIllegalCrossThreadCalls = false;
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.Text = "Data Manager  Loading csv file";
+                dataGridView_Contact.AutoGenerateColumns = false;
+                dataGridView_Contact.DataSource = obj;
+                this.Text = "Data Manager 1.05";
             });
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            this.Text = "Data Manager 1.04";
+            this.Text = "Data Manager 1.05";
         }
 
         private List<ProfileInfo> GetProfileForCombo()
@@ -429,7 +516,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Profile.AutoGenerateColumns = false;
                 dataGridView_Profile.DataSource = obj;
-                this.Text = "Data Manager 1.04";
+                this.Text = "Data Manager 1.05";
             });
         }
 
@@ -481,6 +568,7 @@ namespace Data_Filter
             }
 
             var obj = GetContactForCombo();
+            
 
             if (cb_contact_dedupe.GetItemCheckState(1) == CheckState.Checked) obj = obj.GroupBy(m => m.Name).Select(m => m.FirstOrDefault()).ToList();
             if (cb_contact_dedupe.GetItemCheckState(2) == CheckState.Checked) obj = obj.GroupBy(m => m.firstName == "" ? m.No : m.firstName).Select(m => m.FirstOrDefault()).ToList();
@@ -512,7 +600,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
-                this.Text = "Data Manager 1.04";
+                this.Text = "Data Manager 1.05";
             });
         }
 
@@ -622,7 +710,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
-                this.Text = "Data Manager 1.04";
+                this.Text = "Data Manager 1.05";
             });
         }
 
@@ -698,7 +786,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
-                this.Text = "Data Manager 1.04";
+                this.Text = "Data Manager 1.05";
 
                 dataGridView_Contact.Columns[16].Visible = false;
                 dataGridView_Contact.Columns[17].Visible = false;
@@ -760,7 +848,7 @@ namespace Data_Filter
                 this.Text = "Data Manager  Loading csv file";
                 dataGridView_Contact.AutoGenerateColumns = false;
                 dataGridView_Contact.DataSource = obj;
-                this.Text = "Data Manager 1.04";
+                this.Text = "Data Manager 1.05";
 
                 dataGridView_Contact.Columns[19].Visible = false;
                 dataGridView_Contact.Columns[20].Visible = false;
@@ -769,5 +857,7 @@ namespace Data_Filter
                 dataGridView_Contact.Columns[23].Visible = false;
             });
         }
+
+
     }
 }
